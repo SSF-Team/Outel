@@ -1,0 +1,81 @@
+a{
+    text-decoration: none;
+}
+
+html,body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+div#global{
+    height: 100%;
+    padding-bottom: 50px;
+    box-sizing: border-box;
+    background-color: rgb(255,255,255);
+}
+
+#left{
+    width: 50%;
+    height: 100%;
+    float: left;
+    background-color: #69ADFF;
+    position:relative;
+}
+
+#right{
+    width: 50%;
+    height: 100%;
+    float: right;
+    background-color: rgb(255,255,255);
+    position:relative;
+}
+
+#floor {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    margin-bottom: -50px;
+    background-color: rgb(251,251,251);
+    text-align: center;
+    color: rgb(91, 112, 131);
+    font-family: 'Microsoft YaHei UI';
+    font-size: 14px;
+}
+
+.inboxLeft {
+    height:160px; 
+    width: 375px;
+    margin: auto;  
+    position: absolute;  
+    top: 0;
+    left: 0;
+    bottom: 0; 
+    right: 0;
+}
+
+.inboxRight {
+    height:310px; 
+    width: 470px;
+    margin: auto;  
+    position: absolute;  
+    top: 0;
+    left: 0;
+    bottom: 0; 
+    right: 0;
+}
+
+.menuLeft {
+    font-size: 20px;
+    font-weight:bold;
+}
+
+.menuLeftIcon {
+    width: 30px;
+    margin-right: 10px;
+}
+
+.fontBold {
+    font-family: 'Microsoft YaHei';
+    font-weight: bold;
+}
