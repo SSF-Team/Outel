@@ -1,13 +1,3 @@
-function showLogin() {
-    var loginPan=document.getElementById("loginPan");
-    loginPan.style.visibility = "visible";
-}
-
-function hidLogin() {
-    var loginPan=document.getElementById("loginPan");
-    loginPan.style.visibility = "collapse";
-}
-
 function inputChoice(nameBorder, nameTitle) {
     var border=document.getElementById(nameBorder);
     border.style.border = "2px solid #69ADFF";

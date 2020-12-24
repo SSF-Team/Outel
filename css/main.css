@@ -15,21 +15,6 @@ div#global{
     background-color: rgb(255,255,255);
 }
 
-#left{
-    width: 50%;
-    height: 100%;
-    float: left;
-    background-color: #69ADFF;
-    position:relative;
-}
-
-#right{
-    width: 50%;
-    height: 100%;
-    float: right;
-    background-color: rgb(255,255,255);
-    position:relative;
-}
 
 #floor {
     height: 50px;
@@ -56,7 +41,7 @@ div#global{
 
 .inboxRight {
     height:310px; 
-    width: 470px;
+    max-width: 470px;
     margin: auto;  
     position: absolute;  
     top: 0;
@@ -90,14 +75,6 @@ div#global{
     background-color: rgba(0,0,0,0.5);
 }
 
-.card {
-    background-color: white;
-    border-radius: 7px;
-    -moz-box-shadow:0px 0px 20px -8px #BABABA;
-    -webkit-box-shadow:0px 0px 20px -8px #BABABA;
-    box-shadow:0px 0px 20px -8px #BABABA;
-}
-
 .btnClose {
     border: 0;
     width: 37px;
@@ -117,7 +94,7 @@ div#global{
     padding-right: 10px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1100px) {
 
     .cardLogin {
         position: absolute;  
@@ -127,9 +104,38 @@ div#global{
         right: 0;
     }
 
+    .cardReg {
+        position: absolute;  
+        top: 0;
+        left: 0;
+        bottom: 0; 
+        right: 0;
+    }
+
+    .card {
+        background-color: white;
+        border-radius: 0px;
+    }
+    
+    #right{
+        width: 50%;
+        height: 100%;
+        background-color: rgb(255,255,255);
+    }
+
+    
+    #left{
+        width: 50%;
+        height: 100%;
+        float: left;
+        background-color: #69ADFF;
+        position:relative;
+        visibility: collapse;
+    }
+
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 1100px) {
 
     .cardLogin {
         width: 600px;
@@ -141,6 +147,42 @@ div#global{
         left: 0;
         bottom: 0; 
         right: 0;
+    }
+
+    .cardReg {
+        width: 600px;
+        height: 650px;
+        margin: 0 auto;
+        margin: auto;  
+        position: absolute;  
+        top: 0;
+        left: 0;
+        bottom: 0; 
+        right: 0;
+    }
+
+    .card {
+        background-color: white;
+        border-radius: 7px;
+        -moz-box-shadow:0px 0px 20px -8px #BABABA;
+        -webkit-box-shadow:0px 0px 20px -8px #BABABA;
+        box-shadow:0px 0px 20px -8px #BABABA;
+    }
+
+    #right{
+        width: 50%;
+        height: 100%;
+        float: right;
+        background-color: rgb(255,255,255);
+        position:relative;
+    }
+    
+    #left{
+        width: 50%;
+        height: 100%;
+        float: left;
+        background-color: #69ADFF;
+        position:relative;
     }
 
 }
