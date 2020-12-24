@@ -110,6 +110,15 @@ html,body{
     margin: 0 auto;
 }
 
+.BThree{
+    height: 280px;
+    background-color: #F5F8FA;
+}
+
+.BThreeword{
+
+}
+
 .BFourSecond{
     height: 370px;
     background-color: #F5F8FA;
@@ -186,7 +195,7 @@ html,body{
     background: #1DA1F2;
     height: 120px;
     font-family: "Microsoft YaHei";
-    color: rgba(255,255,255,70%);
+    color: rgba(255,255,255,0.7);
 }
 
 
