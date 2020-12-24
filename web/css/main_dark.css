@@ -44,6 +44,7 @@ div#global{
 .inboxRight {
     height:310px;
     max-width: 470px;
+    width: 50%;
     margin: auto;
     position: absolute;
     top: 0;
