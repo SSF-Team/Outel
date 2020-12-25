@@ -1,0 +1,105 @@
+html,body{
+    padding: 0px;
+    margin: 0px;
+    background-color: #EBEEF0;
+}
+
+.home{
+    width: 1300px;
+    height:800000px;
+    margin: 0 auto;
+    position: relative;
+    background-color: #F7F9FA;
+}
+
+.lefthome{
+    width: 280px;
+    height: 100%;
+    background-color: #FFFFFF;
+    position: fixed;
+}
+.lefthomeFirst{
+    z-index: 998;
+    width: 255px;
+    height: 100%;
+    background-color: #6f42c1;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: absolute;
+}
+.lefthomeSecond{
+    z-index: 999;
+    background-color: #20c997;
+    width: 255px;
+    height: 59px;
+    position: absolute;
+    bottom: 30px;
+}
+
+.centerhome{
+    width: 600px;
+    height: 100%;
+    background-color: #FFFFFF;
+    left: 280px;
+    position: absolute;
+}
+
+.righthome{
+    width: 420px;
+    height: 100%;
+    background-color: #FFFFFF;
+    left: 880px;
+    position: absolute;
+}
+
+.RightBottomBar{
+    z-index: 999;
+    width: 352px;
+    height: 103px;
+    margin-bottom: -50px;
+    border-radius: 18px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 15px -9px #333333;
+    position: fixed;
+    bottom: 0px;
+    right: 20px;
+}
+.RightBottomBar>div:first-child{
+    height: 53px;
+    width: 222px;
+    font-family: "Microsoft YaHei";
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding-left: 15px;
+    line-height: 53px;
+}
+.RightBottomBar>div:nth-child(2){
+    height: 37px;
+    width: 37px;
+    padding-right: 15px;
+    position: absolute;
+    right: 0px;
+    top: 15px;
+}
+.RightBottomBar>div:nth-child(3){
+    height: 37px;
+    width: 37px;
+    padding-right: 15px;
+    position: absolute;
+    right: 37px;
+    top: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
