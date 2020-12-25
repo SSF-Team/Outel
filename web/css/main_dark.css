@@ -102,6 +102,24 @@ input {
     color: white;
 }
 
+.toastMain {
+    position: absolute;
+    bottom: 90px;
+    right: 0;
+    left: 50%;
+    border-radius: .75rem;
+    width: 500px;
+    max-width: 500px;
+    text-align: center;
+    margin-left: -250px;
+    background: transparent;
+}
+
+.toastBody {
+    border-radius: .75rem;
+    background: #9D362A;
+}
+
 @media screen and (max-width: 1100px) {
 
     .cardLogin {

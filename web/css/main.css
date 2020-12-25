@@ -95,6 +95,25 @@ div#global{
     padding-right: 10px;
 }
 
+.toastMain {
+    position: absolute;
+    bottom: 90px;
+    right: 0;
+    left: 50%;
+    border-radius: .75rem;
+    width: 500px;
+    max-width: 500px;
+    text-align: center;
+    margin-left: -250px;
+    background: transparent;
+    color: white;
+}
+
+.toastBody {
+    border-radius: .75rem;
+    background: #c93939;
+}
+
 @media screen and (max-width: 1100px) {
 
     .cardLogin {
