@@ -1,5 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ page import="com.outside.outel.ToolClass.urlClass"%>
 
 <!DOCTYPE html>
 <html lang="cn">
@@ -43,7 +42,16 @@
                 <form action="LoginPass" method="post" onsubmit="return checkForm();" style="width: 100%;">
                     <label id="labName" class="inputLab" style="margin-top: 30px;">
                         <font id="titName" style="font-size: 13px;">邮件地址</font>
-                        <input name="account" type="email" id="acc" style="width: 100%;height: 30px;border: 0;outline: 0;" onblur="inputunChoice('labName', 'titName')" onFocus="inputChoice('labName', 'titName')">
+                        <input name="account" type="email" id="acc" style="width: 100%;height: 30px;border: 0;outline: 0;" onblur="inputunChoice('labName', 'titName')" onFocus="inputChoice('labName', 'titName')"
+
+                            <%
+                            String em = request.getParameter("email");
+                            if(em != null) {
+                                out.print("value=\"" + em + "\"");
+                            }
+                            %>
+
+                        >
                     </label>
                     <label id="labPass" class="inputLab">
                         <font id="titPass" style="font-size: 13px;">密码</font>

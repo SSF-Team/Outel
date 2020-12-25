@@ -4,19 +4,17 @@ import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 
 /**
- * @Version: 1.0
- * @Date: 2020/12/25 下午 09:30
- * @ClassName: urlClass
- * @Author: Stapxs
- * @Description TO DO
- **/
+ * @Author Stapx Steve
+ * @Description TODO URL 编码解码工具类
+ * @Date 下午 09:30 2020/12/25
+**/
+
 public class urlClass {
     public static String urlEncode(String str) throws UnsupportedEncodingException {
         StringBuilder sb = new StringBuilder();
         //获得UTF-8编码的字节数组
         byte[] utf8 = str.getBytes("UTF-8");
         for (byte b : utf8) {
-            System.out.println(b);
             //将字节转换成16进制，并截取最后两位
             String hexStr = Integer.toHexString(b);
             String temp = hexStr.substring(hexStr.length() - 2);
@@ -43,11 +41,9 @@ public class urlClass {
             } else {
                 temp = str.substring(i + 1, i + 3);
             }
-            System.out.println(temp);
             //转换成自字节
             arr[i / 3] = (byte) Integer.parseInt(temp, 16);
         }
-        System.out.println(Arrays.toString(arr));    //[-28, -72, -83, -27, -101, -67]
         //解码
         return new String(arr, 0, arr.length, "UTF-8");
     }

@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=gb2312"%>
 <%@ page import="com.outside.outel.ToolClass.errType"%>
+
 <!DOCTYPE html>
 <html lang="cn">
 <head>

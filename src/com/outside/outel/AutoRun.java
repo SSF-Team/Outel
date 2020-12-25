@@ -32,6 +32,8 @@ public class AutoRun implements ServletContextListener{
         if(sqlConer.ConnectSQL())
         {
             System.out.println("连接数据库成功！");
+        } else {
+            System.out.println("连接数据库失败。请注意此条报错！这意味着接下来的所有 MySQL 操作将会全部报错！");
         }
 
         System.out.println("================> 自动加载启动结束");

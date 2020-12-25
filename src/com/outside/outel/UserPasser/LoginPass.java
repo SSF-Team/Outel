@@ -50,12 +50,10 @@ public class LoginPass extends HttpServlet {
                     response.getWriter().print("<script> alert(\"登陆成功！\"); </script>");
                 } else if(loginBack.equals("FAIL")) {
                     // 跳转回登陆界面（不会改变地址栏上的 URL）
-                    request.getRequestDispatcher("/login.jsp?err=" + urlClass.urlEncode("账户或者密码错误，再试试？")).forward(request,response);
-                    return;
+                    request.getRequestDispatcher("/login.jsp?err=" + urlClass.urlEncode("账户或者密码错误，再试试？") + "&email=" + request.getParameter("account")).forward(request,response);
                 } else {
                     // 跳转到 500
                     response.sendRedirect("error/error.jsp?err=" + loginBack + "&type=500");
-                    return;
                 }
             } else {
                 // 跳转回 index
