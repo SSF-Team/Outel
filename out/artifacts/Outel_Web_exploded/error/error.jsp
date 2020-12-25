@@ -5,11 +5,24 @@
 <head>
     <meta charset="UTF-8">
     <title>发生错误 / Outel</title>
-    <link rel="stylesheet" href="error.css">
+    <link rel="stylesheet" href="error.css" id="colorCSS">
 </head>
+
+<script type="text/javascript">
+    // 判断系统是否在暗黑模式下并替换对应 CSS
+    window.onload = function(){
+        const css = document.getElementById("colorCSS");
+        if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            css.setAttribute("href","error_dark.css");
+        } else {
+            css.setAttribute("href","error.css");
+        }
+    }
+</script>
+
 <body>
 <div class="topbar">&nbsp;&nbsp;&nbsp;&nbsp;
-    <img src="../svg/outel_no_white.svg" height="16px">&nbsp;&nbsp;
+    <img src="../svg/outel_no_white.svg"  height="16px">&nbsp;&nbsp;
     发生错误
 </div>
 <div class="tophome">
