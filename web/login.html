@@ -27,37 +27,47 @@
 
 <body>
 
-    <iframe width="100%" height="100%" src="index.html"></iframe>
+<iframe width="100%" height="100%" src="index.html"></iframe>
 
-    <!-- 登录窗口 -->
-    <div class="overlay" id="loginPan">
-        <div class="card cardLogin">
-            <div id="topBarLogin" style="text-align: center;">
-                <img src="svg/outel_no_c.svg" style="height: 35px;margin-top: 45px;"/>
-                <div style="margin: 50px;text-align: left;margin-top: 65px;">
-                    <font style="font-size: 25px;" class="fontBold">欢迎回来，朋友！</font><br><div class="input-group mb-3">
-                    <form action="LoginPass" method="POST"><form action="HelloForm" method="GET">
-                        <label id="labName" class="inputLab" style="margin-top: 30px;">
-                            <font id="titName" style="font-size: 13px;">邮件地址或用户名</font>
-                            <input name="account" style="width: 100%;height: 30px;border: 0;outline: 0;" onblur="inputunChoice('labName', 'titName')" onFocus="inputChoice('labName', 'titName')">
-                        </label>
-                        <label id="labPass" class="inputLab">
-                            <font id="titPass" style="font-size: 13px;">密码</font>
-                            <input name="password" type="password" style="width: 100%;height: 30px;border: 0;outline: 0;" onblur="inputunChoice('labPass', 'titPass')" onFocus="inputChoice('labPass', 'titPass')">
-                        </label>
-                        <input type="submit" value="登录" class="btn btn-primary" style="width: 100%;background-color: #53a1ff;border: 1;border-radius: 20px;border-color: #69ADFF;height: 45px;margin-top: 25px;"/>
-                    </form>
-                    <br><br>
-                    <div style="height: 20px;text-align: center;width: 100%;margin-top:25px;">
-                        <a href="#" style="font-size: 14px;">忘记密码</a> · <a href="#" style="font-size: 14px;">注册 Outel</a>
-                    </div>
+<!-- 登录窗口 -->
+<div class="overlay" id="loginPan">
+    <div class="card cardLogin">
+        <div id="topBarLogin" style="text-align: center;">
+            <img src="svg/outel_no_c.svg" style="height: 35px;margin-top: 45px;"/>
+            <div style="margin: 50px;text-align: left;margin-top: 65px;">
+                <font style="font-size: 25px;" class="fontBold">欢迎回来，朋友！</font><br><div class="input-group mb-3">
+                <form action="LoginPass" method="post" onsubmit="return checkForm();">
+                    <label id="labName" class="inputLab" style="margin-top: 30px;">
+                        <font id="titName" style="font-size: 13px;">邮件地址或用户名</font>
+                        <input name="account" style="width: 100%;height: 30px;border: 0;outline: 0;" onblur="inputunChoice('labName', 'titName')" onFocus="inputChoice('labName', 'titName')">
+                    </label>
+                    <label id="labPass" class="inputLab">
+                        <font id="titPass" style="font-size: 13px;">密码</font>
+                        <input name="password" type="password" id="pwd" style="width: 100%;height: 30px;border: 0;outline: 0;" onblur="inputunChoice('labPass', 'titPass')" onFocus="inputChoice('labPass', 'titPass')">
+                    </label>
+                    <input type="submit" value="登录" class="btn btn-primary" style="width: 100%;background-color: #53a1ff;border: 1;border-radius: 20px;border-color: #69ADFF;height: 45px;margin-top: 25px;"/>
+                </form>
+                <br><br>
+                <div style="height: 20px;text-align: center;width: 100%;margin-top:25px;">
+                    <a href="#" style="font-size: 14px;">忘记密码</a> · <a href="#" style="font-size: 14px;">注册 Outel</a>
                 </div>
+            </div>
             </div>
         </div>
     </div>
 
+    <script>
+        // 输入加密
+        function checkForm(){
+            var pwd= document.getElementById('pwd');
+            pwd.value= md5(pwd.value);
+            return true;
+        }
+    </script>
+
     <script src="bootstrap/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/md5.js"></script>
 
 </body>
 </html>

@@ -5,12 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Version: 1.0
- * @Date: 2020/12/25 下午 02:18
- * @ClassName: errType
- * @Author: Stapxs
- * @Description TO DO
- **/
+ * @Author Stapx Steve
+ * @Description TODO 基础工具类
+ * @Date 下午 04:48 2020/12/25
+**/
+
 public class errType {
 
     // err 结构

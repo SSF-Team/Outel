@@ -23,7 +23,7 @@ html, body {
     border: none;
     overflow: hidden;
     padding-top: 110px;
-    background: url("../svg/lang.svg") no-repeat;
+    background: url("lang.svg") no-repeat;
     background-position: left 0px bottom 0px;
     background-clip: border-box;
 }
