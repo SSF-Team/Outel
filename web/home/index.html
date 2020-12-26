@@ -5,15 +5,18 @@
     <title>主页 / Outel - 畅所欲言</title>
     <link rel="icon" href="icon.png" sizes="32x32">
     <link rel="stylesheet" href="home.css">
+    <link href="../bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
 
 <!--私信-->
-<div class="RightBottomBar">
+<div id="RightBar" class="RightBottomBar" style="margin-bottom: -50px;">
     <div>私信</div>
     <div>
-        <img src="../svg/double_up.svg">
+        <button id="RightBarButton" style="padding: 0;margin: 0;border: 0;background-color: transparent;outline: none;transform:rotate(0deg);" onclick="RightBottomBarClick('RightBar');">
+            <img src="../svg/double_up.svg">
+        </button>
     </div>
     <div>
         <img src="../svg/sendmessage.svg">
@@ -149,6 +152,9 @@
     </div>
 
 </div>
+
+<script src="../bootstrap/bootstrap.min.js"></script>
+<script src="home.js"></script>
 
 </body>
 </html>
