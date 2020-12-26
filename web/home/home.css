@@ -1,57 +1,93 @@
 html,body{
     padding: 0px;
     margin: 0px;
-    background-color: #EBEEF0;
+    background-color: #F7F9FA;
 }
 
 .home{
     width: 1300px;
-    height:800000px;
+    height:2000px;
     margin: 0 auto;
     position: relative;
     background-color: #F7F9FA;
 }
 
+/*左侧*/
 .lefthome{
     width: 280px;
     height: 100%;
     background-color: #FFFFFF;
     position: fixed;
 }
+/*左第二大框架*/
 .lefthomeFirst{
     z-index: 998;
     width: 255px;
     height: 100%;
-    background-color: #6f42c1;
     padding-left: 10px;
     padding-right: 10px;
     position: absolute;
 }
+/*左底用户*/
 .lefthomeSecond{
     z-index: 999;
     background-color: #20c997;
     width: 255px;
     height: 59px;
     position: absolute;
-    bottom: 30px;
+    bottom: 10px;
+}
+/*左上logo*/
+.lefthomeLogo{
+    height: 47px;
+    padding-bottom: 0px;
+    padding-left: 15px;
+}
+/*左中*/
+.lefthomeFirst>div:nth-child(2){
+    height: 47px;
+    width: 255px;
+    padding-bottom: 4px;
+    padding-top: 4px;
 }
 
+/*中间*/
 .centerhome{
     width: 600px;
     height: 100%;
-    background-color: #FFFFFF;
+    background-color: #17a2b8;
     left: 280px;
+    border:1px solid #EBEEF0;
     position: absolute;
 }
+
+.centerTopBar{
+    z-index: 999;
+    height: 53px;
+    width: 570px;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: absolute;
+    float: left;
+    left: 280px;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+}
+
+
+
+
 
 .righthome{
     width: 420px;
     height: 100%;
-    background-color: #FFFFFF;
+    background-color: #ed969e;
     left: 880px;
     position: absolute;
 }
 
+
+/*私信*/
 .RightBottomBar{
     z-index: 999;
     width: 352px;
@@ -89,12 +125,6 @@ html,body{
     right: 37px;
     top: 15px;
 }
-
-
-
-
-
-
 
 
 
