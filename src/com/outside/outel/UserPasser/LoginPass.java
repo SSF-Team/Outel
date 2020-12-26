@@ -40,7 +40,7 @@ public class LoginPass extends HttpServlet {
                 // 设置页面编码
                 response.setContentType("text/html;charset=UTF-8");
                 // 验证登录
-                if(request.getParameter("account").isBlank() || request.getParameter("password").isBlank()) {
+                if(request.getParameter("account").isEmpty() || request.getParameter("password").isEmpty()) {
                     // 跳转回登陆界面（不会改变地址栏上的 URL）
                     request.getRequestDispatcher("/login.jsp?err=" + urlClass.urlEncode("输入为空，认真点！")).forward(request,response);
                     return;
@@ -70,7 +70,7 @@ public class LoginPass extends HttpServlet {
             // 执行查询
             Statement stmt = SQLConnecter.conn.createStatement();
             String sql = "SELECT email, password from out_user WHERE email = '" + acc + "';";
-            System.out.println(sql);
+            System.out.println("================> " + sql);
             ResultSet rs = stmt.executeQuery(sql);
 
             // 展开结果集数据库

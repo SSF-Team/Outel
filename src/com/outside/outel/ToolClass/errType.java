@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * @Author Stapx Steve
- * @Description TODO 基础工具类
+ * @Description TODO HTTP 报错内容
  * @Date 下午 04:48 2020/12/25
 **/
 

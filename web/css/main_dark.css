@@ -102,21 +102,7 @@ input {
     color: white;
 }
 
-.toastMain {
-    position: absolute;
-    bottom: 90px;
-    right: 0;
-    left: 50%;
-    border-radius: .75rem;
-    width: 500px;
-    max-width: 500px;
-    text-align: center;
-    margin-left: -250px;
-    background: transparent;
-}
-
 .toastBody {
-    border-radius: .75rem;
     background: #9D362A;
 }
 
@@ -158,6 +144,17 @@ input {
         background-color: #69ADFF;
         position:relative;
         visibility: collapse;
+    }
+
+    .toastMain {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        min-width: 100%;
+        text-align: center;
+        background: transparent;
+        color: white;
     }
 
 }
@@ -211,6 +208,20 @@ input {
         float: left;
         background-color: #69ADFF;
         position:relative;
+    }
+
+    .toastMain {
+        position: absolute;
+        bottom: 90px;
+        right: 0;
+        left: 50%;
+        border-radius: .75rem;
+        width: 500px;
+        max-width: 500px;
+        text-align: center;
+        margin-left: -250px;
+        background: transparent;
+        color: white;
     }
 
 }
