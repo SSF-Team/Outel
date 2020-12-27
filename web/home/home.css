@@ -18,6 +18,7 @@ html,body{
     height: 100%;
     background-color: #FFFFFF;
     position: fixed;
+    border-right: 1px solid #EBEEF0;
 }
 /*左第二大框架*/
 .lefthomeFirst{
@@ -37,6 +38,12 @@ html,body{
     position: absolute;
     bottom: 10px;
 }
+.lefthomeSecond>div:nth-child(2){
+
+}
+
+
+
 /*左上logo*/
 .lefthomeLogo{
     height: 47px;
@@ -53,12 +60,13 @@ html,body{
 
 /*中间*/
 .centerhome{
-    width: 600px;
+    width: 598px;
     height: 100%;
-    background-color: #17a2b8;
+    background-color: #FFFFFF;
     left: 280px;
     border:1px solid #EBEEF0;
     position: absolute;
+    top: 53px;
 }
 
 .centerTopBar{
@@ -66,12 +74,14 @@ html,body{
     height: 53px;
     width: 570px;
     padding-left: 15px;
-    padding-right: 15px;
+    padding-right: 13px;
     position: absolute;
     float: left;
     left: 280px;
     margin: 0 auto;
     background-color: #FFFFFF;
+    border-right: 1px solid #EBEEF0;
+    border-left: 1px solid #EBEEF0;
 }
 
 
@@ -81,7 +91,7 @@ html,body{
 .righthome{
     width: 420px;
     height: 100%;
-    background-color: #ed969e;
+    background-color: #FFFFFF;
     left: 880px;
     position: absolute;
 }
@@ -126,7 +136,20 @@ html,body{
 }
 
 
+.outnowbar{
+    width: 598px;
+    height: 120px;
+    background-color: #FFFFFF;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom:1px solid #EBEEF0;
+}
 
+.cutline{
+    width: 598px;
+    height: 10px;
+    background-color: #F7F9FA;
+}
 
 
 
