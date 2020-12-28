@@ -47,7 +47,7 @@ public class LoginPass extends HttpServlet {
                 }
                 String loginBack = Login(request.getParameter("account"), request.getParameter("password"));
                 if(loginBack.equals("OK")) {
-                    response.getWriter().print("<script> alert(\"登陆成功！\"); </script>");
+                    response.sendRedirect("home");
                 } else if(loginBack.equals("FAIL")) {
                     // 跳转回登陆界面（不会改变地址栏上的 URL）
                     request.getRequestDispatcher("/login.jsp?err=" + urlClass.urlEncode("账户或者密码错误，再试试？") + "&email=" + request.getParameter("account")).forward(request,response);

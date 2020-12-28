@@ -50,6 +50,7 @@ public class RegPass extends HttpServlet {
                 }
                 if(!Tools.checkEmail(request.getParameter("email"))) {
                     request.getRequestDispatcher("/register.jsp?err=" + urlClass.urlEncode("邮箱格式错误，再检查下。") + "&name=" + urlClass.urlEncode(request.getParameter("name")) + "&mail=" + urlClass.urlEncode(request.getParameter("email"))).forward(request,response);
+                    return;
                 }
                 // 开始注册
                 String regBack = Register(request.getParameter("name"), request.getParameter("email"), request.getParameter("password"));
