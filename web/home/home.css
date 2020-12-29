@@ -1,7 +1,7 @@
 html,body{
     padding: 0px;
     margin: 0px;
-    background-color: #F7F9FA;
+    /*background-color: #F7F9FA;*/
 }
 
 .home{
@@ -62,27 +62,26 @@ html,body{
 .centerhome{
     width: 598px;
     height: 100%;
-    background-color: #FFFFFF;
+    background-color: red;
     left: 280px;
     border:1px solid #EBEEF0;
     position: absolute;
-    top: 53px;
 }
 
-.centerTopBar{
-    z-index: 999;
-    height: 53px;
-    width: 570px;
-    padding-left: 15px;
-    padding-right: 13px;
-    position: absolute;
-    float: left;
-    left: 280px;
-    margin: 0 auto;
-    background-color: #FFFFFF;
-    border-right: 1px solid #EBEEF0;
-    border-left: 1px solid #EBEEF0;
-}
+/*.centerTopBar{*/
+/*    z-index: 999;*/
+/*    height: 53px;*/
+/*    width: 570px;*/
+/*    padding-left: 15px;*/
+/*    padding-right: 13px;*/
+/*    position: absolute;*/
+/*    float: left;*/
+/*    left: 280px;*/
+/*    margin: 0 auto;*/
+/*    background-color: #FFFFFF;*/
+/*    border-right: 1px solid #EBEEF0;*/
+/*    border-left: 1px solid #EBEEF0;*/
+/*}*/
 
 
 
