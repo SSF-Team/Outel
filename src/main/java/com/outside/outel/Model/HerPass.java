@@ -1,6 +1,6 @@
-package com.outside.outel.welcome;
+package com.outside.outel.Model;
 
-import com.outside.outel.ToolClass.urlClass;
+import com.outside.outel.Util.*;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,11 +38,11 @@ public class HerPass extends HttpServlet {
                 response.setContentType("text/html;charset=UTF-8");
                 // 检查输入
                 if(request.getParameter("img").isEmpty()) {
-                    request.getRequestDispatcher("/register.jsp?err=" + urlClass.urlEncode("输入为空，认真点！")).forward(request,response);
+                    request.getRequestDispatcher("/register.jsp?err=" + URL.Encode("输入为空，认真点！")).forward(request,response);
                     return;
                 }
                 if(!request.getParameter("img").substring(0, 11).equals("data:image/")) {
-                    request.getRequestDispatcher("/register.jsp?err=" + urlClass.urlEncode("这不是个图片！")).forward(request,response);
+                    request.getRequestDispatcher("/register.jsp?err=" + URL.Encode("这不是个图片！")).forward(request,response);
                     return;
                 }
                 // 处理图片

@@ -1,8 +1,8 @@
-package com.outside.outel.UserPasser;
+package com.outside.outel.Model;
 
-import com.outside.outel.SQL.SQLConnecter;
-import com.outside.outel.ToolClass.Tools;
-import com.outside.outel.ToolClass.urlClass;
+import com.outside.outel.Dao.User;
+import com.outside.outel.Layer.SQLConnecter;
+import com.outside.outel.Util.*;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.List;
 
 /**
  * @Author Stapx Steve
@@ -41,21 +42,21 @@ public class RegPass extends HttpServlet {
                 response.setContentType("text/html;charset=UTF-8");
                 // 输入判定
                 if(request.getParameter("name").isEmpty() || request.getParameter("email").isEmpty() || request.getParameter("password").isEmpty()) {
-                    request.getRequestDispatcher("/register.jsp?err=" + urlClass.urlEncode("输入为空，认真点！")).forward(request,response);
+                    request.getRequestDispatcher("/register.jsp?err=" + URL.Encode("输入为空，认真点！")).forward(request,response);
                     return;
                 }
                 if(Tools.isSpecialChar(request.getParameter("name"))) {
-                    request.getRequestDispatcher("/register.jsp?err=" + urlClass.urlEncode("用户名包含特殊字符，再检查下。") + "&name=" + urlClass.urlEncode(request.getParameter("name")) + "&mail=" + urlClass.urlEncode(request.getParameter("email"))).forward(request,response);
+                    request.getRequestDispatcher("/register.jsp?err=" + URL.Encode("用户名包含特殊字符，再检查下。") + "&name=" + URL.Encode(request.getParameter("name")) + "&mail=" + URL.Encode(request.getParameter("email"))).forward(request,response);
                     return;
                 }
                 if(!Tools.checkEmail(request.getParameter("email"))) {
-                    request.getRequestDispatcher("/register.jsp?err=" + urlClass.urlEncode("邮箱格式错误，再检查下。") + "&name=" + urlClass.urlEncode(request.getParameter("name")) + "&mail=" + urlClass.urlEncode(request.getParameter("email"))).forward(request,response);
+                    request.getRequestDispatcher("/register.jsp?err=" + URL.Encode("邮箱格式错误，再检查下。") + "&name=" + URL.Encode(request.getParameter("name")) + "&mail=" + URL.Encode(request.getParameter("email"))).forward(request,response);
                     return;
                 }
                 // 开始注册
                 String regBack = Register(request.getParameter("name"), request.getParameter("email"), request.getParameter("password"));
                 if(regBack.equals("EMAIL")) {
-                    request.getRequestDispatcher("/register.jsp?err=" + urlClass.urlEncode("这个邮箱已经被注册过了哦") + "&name=" + urlClass.urlEncode(request.getParameter("name")) + "&mail=" + urlClass.urlEncode(request.getParameter("email"))).forward(request,response);
+                    request.getRequestDispatcher("/register.jsp?err=" + URL.Encode("这个邮箱已经被注册过了哦") + "&name=" + URL.Encode(request.getParameter("name")) + "&mail=" + URL.Encode(request.getParameter("email"))).forward(request,response);
                 } else if(regBack.equals("OK")) {
                     response.getWriter().print("<script> alert(\"注册成功！\"); </script>");
                 } else {
@@ -73,18 +74,22 @@ public class RegPass extends HttpServlet {
 
     private String Register(String name, String email, String password) {
         try {
-            Statement stmt = SQLConnecter.conn.createStatement();
             // 查询用户列表是否有重复的邮箱
-            String sql = "SELECT email from out_user;";
-            System.out.println("================> " + sql);
-            ResultSet rs = stmt.executeQuery(sql);
-            while (rs.next()) {
-                String emailGet = rs.getString("email");
-                if (emailGet.equals(email))
+            List<User.SQLVer> infos = User.selectAll("email");
+            boolean get = false;
+            for(User.SQLVer info: infos) {
+                get = true;
+                if(info.value.equals(email)) {
+                    System.out.println("================> 注册操作\n" + email + " -> Pass");
                     return "EMAIL";
+                }
+            }
+            if(!get) {
+                return "Can't Find Email Lib.";
             }
             // 写入用户信息
-            sql = "INSERT INTO out_user (user_name, email, password) VALUES ('" + name + "', '" + email + "', '" + password + "');";
+            Statement stmt = SQLConnecter.conn.createStatement();
+            String sql = "INSERT INTO out_user (user_name, email, password) VALUES ('" + name + "', '" + email + "', '" + password + "');";
             System.out.println("================> " + sql);
             int back = stmt.executeUpdate(sql);
             if(back == 1) {

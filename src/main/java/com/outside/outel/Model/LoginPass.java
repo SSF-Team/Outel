@@ -1,11 +1,11 @@
-package com.outside.outel.UserPasser;
+package com.outside.outel.Model;
 
-import com.outside.outel.SQL.SQLConnecter;
-import com.outside.outel.ToolClass.urlClass;
+import com.outside.outel.Dao.*;
+import com.outside.outel.Util.*;
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,15 +42,18 @@ public class LoginPass extends HttpServlet {
                 // 验证登录
                 if(request.getParameter("account").isEmpty() || request.getParameter("password").isEmpty()) {
                     // 跳转回登陆界面（不会改变地址栏上的 URL）
-                    request.getRequestDispatcher("/login.jsp?err=" + urlClass.urlEncode("输入为空，认真点！")).forward(request,response);
+                    request.getRequestDispatcher("/login.jsp?err=" + URL.Encode("输入为空，认真点！")).forward(request,response);
                     return;
                 }
                 String loginBack = Login(request.getParameter("account"), request.getParameter("password"));
                 if(loginBack.equals("OK")) {
+                    // 生成 Token
+
+                    // 跳转主页
                     response.sendRedirect("home");
                 } else if(loginBack.equals("FAIL")) {
                     // 跳转回登陆界面（不会改变地址栏上的 URL）
-                    request.getRequestDispatcher("/login.jsp?err=" + urlClass.urlEncode("账户或者密码错误，再试试？") + "&email=" + request.getParameter("account")).forward(request,response);
+                    request.getRequestDispatcher("/login.jsp?err=" + URL.Encode("账户或者密码错误，再试试？") + "&email=" + request.getParameter("account")).forward(request,response);
                 } else {
                     // 跳转到 500
                     response.sendRedirect("error/error.jsp?err=" + loginBack + "&type=500");
@@ -65,30 +68,29 @@ public class LoginPass extends HttpServlet {
         }
     }
 
-    private String Login(String acc, String password) {
-        try {
-            // 执行查询
-            Statement stmt = SQLConnecter.conn.createStatement();
-            String sql = "SELECT email, password from out_user WHERE email = '" + acc + "';";
-            System.out.println("================> " + sql);
-            ResultSet rs = stmt.executeQuery(sql);
-
-            // 展开结果集数据库
-            while(rs.next()){
-                // 通过字段检索
-                String emailGet = rs.getString("email");
-                String passwordGet = rs.getString("password");
-
-                // 确认登录
-                if(passwordGet.equals(password))
-                    return "OK";
-                else
-                    return "FAIL";
+    /**
+     * @Author Stapx Steve
+     * @Description TODO 进行登录验证
+     * @Date 下午 01:55 2020/12/28
+     * @Param [acc, password]
+     * @return java.lang.String
+    **/
+    private String Login(String acc, String password) throws SQLException {
+        List<User.SQLVer> infos = User.selectByMail("password", acc);
+        for(User.SQLVer info: infos) {
+            if(info.name.equals("password") && info.value.equals(password)) {
+                System.out.println("================> 登录操作\n" + info.value + " -> Pass");
+                return "OK";
+            } else {
+                System.out.println("================> 登录操作\n" + info.value + " -> UnPass");
+                return "FALSE";
             }
-        } catch (Throwable th) {
-            th.printStackTrace();
-            return th.toString();
         }
-        return "未知错误！";
+        return "FAIL";
+    }
+
+    private boolean setToken(String acc) {
+        // 生成 Token
+        return false;
     }
 }

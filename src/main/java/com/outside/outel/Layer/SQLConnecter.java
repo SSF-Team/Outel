@@ -1,10 +1,7 @@
-package com.outside.outel.SQL;
-
-import com.outside.outel.ToolClass.OptionReader;
+package com.outside.outel.Layer;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
 /**
  * @Author Stapx Steve

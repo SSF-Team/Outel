@@ -1,7 +1,7 @@
 package com.outside.outel;
 
-import com.outside.outel.SQL.SQLConnecter;
-import com.outside.outel.ToolClass.OptionReader;
+import com.outside.outel.Layer.SQLConnecter;
+import com.outside.outel.Layer.OptionReader;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
