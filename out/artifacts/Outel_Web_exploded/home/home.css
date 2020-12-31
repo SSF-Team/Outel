@@ -1,7 +1,7 @@
 html,body{
     padding: 0px;
     margin: 0px;
-    background-color: #F7F9FA;
+    /*background-color: #F7F9FA;*/
 }
 
 .home{
@@ -62,13 +62,17 @@ html,body{
 .centerhome{
     width: 598px;
     height: 100%;
+<<<<<<< HEAD
     background-color: #FFFFFF;
+=======
+    background-color: red;
+>>>>>>> d4481a58c19fe0b046d10972b02c6f20578c0c77
     left: 280px;
     border:1px solid #EBEEF0;
     position: absolute;
-    top: 53px;
 }
 
+<<<<<<< HEAD
 .centerTopBar{
     z-index: 999;
     height: 53px;
@@ -83,6 +87,22 @@ html,body{
     border-right: 1px solid #EBEEF0;
     border-left: 1px solid #EBEEF0;
 }
+=======
+/*.centerTopBar{*/
+/*    z-index: 999;*/
+/*    height: 53px;*/
+/*    width: 570px;*/
+/*    padding-left: 15px;*/
+/*    padding-right: 13px;*/
+/*    position: absolute;*/
+/*    float: left;*/
+/*    left: 280px;*/
+/*    margin: 0 auto;*/
+/*    background-color: #FFFFFF;*/
+/*    border-right: 1px solid #EBEEF0;*/
+/*    border-left: 1px solid #EBEEF0;*/
+/*}*/
+>>>>>>> d4481a58c19fe0b046d10972b02c6f20578c0c77
 
 
 

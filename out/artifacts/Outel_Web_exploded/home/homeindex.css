@@ -1,0 +1,47 @@
+html,body{
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.centerTopBar{
+    z-index: 999;
+    height: 53px;
+    width: 570px;
+    padding-left: 15px;
+    padding-right: 13px;
+    position: fixed;
+    /*float: left;*/
+    /*left: 280px;*/
+    margin: 0 auto;
+    background-color: #FFFFFF;
+    /*border-right: 1px solid #EBEEF0;*/
+    /*border-left: 1px solid #EBEEF0;*/
+}
+
+/*中间*/
+.centerhome{
+    width: 598px;
+    height: 100%;
+    background-color: #FFFFFF;
+    /*left: 280px;*/
+    border-top:1px solid #EBEEF0;
+    position: absolute;
+    top: 53px;
+}
+
+.outnowbar{
+    width: 598px;
+    height: 120px;
+    background-color: #FFFFFF;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom:1px solid #EBEEF0;
+}
+
+.cutline{
+    width: 598px;
+    height: 10px;
+    background-color: #F7F9FA;
+}
+
