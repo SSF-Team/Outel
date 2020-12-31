@@ -27,7 +27,7 @@ public class OptionReader {
 
     private static final File optFile = new File("Options.ini");
 
-    public String GetOpt(String name) {
+    public static String GetOpt(String name) {
         for(OptVer opt: optList) {
             if(opt.name.equals(name)) {
                 return opt.value;
@@ -36,7 +36,7 @@ public class OptionReader {
         return "err";
     }
 
-    public void ReadOpt() throws IOException {
+    public static void ReadOpt() throws IOException {
         // 检查配置文件是否存在
         if (!optFile.exists()) {
             // 如果不存在尝试新建（会创建到 Tomcat 的 bin 目录里去）

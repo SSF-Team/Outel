@@ -1,7 +1,6 @@
 package com.outside.outel.Model;
 
 import com.outside.outel.Dao.User;
-import com.outside.outel.Layer.SQLConnecter;
 import com.outside.outel.Util.*;
 
 import javax.servlet.annotation.WebServlet;
@@ -9,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.List;
 
 /**
@@ -42,21 +39,21 @@ public class RegPass extends HttpServlet {
                 response.setContentType("text/html;charset=UTF-8");
                 // 输入判定
                 if(request.getParameter("name").isEmpty() || request.getParameter("email").isEmpty() || request.getParameter("password").isEmpty()) {
-                    request.getRequestDispatcher("/register.jsp?err=" + URL.Encode("输入为空，认真点！")).forward(request,response);
+                    request.getRequestDispatcher("/register.jsp?err=" + URLTools.Encode("输入为空，认真点！")).forward(request,response);
                     return;
                 }
                 if(Tools.isSpecialChar(request.getParameter("name"))) {
-                    request.getRequestDispatcher("/register.jsp?err=" + URL.Encode("用户名包含特殊字符，再检查下。") + "&name=" + URL.Encode(request.getParameter("name")) + "&mail=" + URL.Encode(request.getParameter("email"))).forward(request,response);
+                    request.getRequestDispatcher("/register.jsp?err=" + URLTools.Encode("用户名包含特殊字符，再检查下。") + "&name=" + URLTools.Encode(request.getParameter("name")) + "&mail=" + URLTools.Encode(request.getParameter("email"))).forward(request,response);
                     return;
                 }
                 if(!Tools.checkEmail(request.getParameter("email"))) {
-                    request.getRequestDispatcher("/register.jsp?err=" + URL.Encode("邮箱格式错误，再检查下。") + "&name=" + URL.Encode(request.getParameter("name")) + "&mail=" + URL.Encode(request.getParameter("email"))).forward(request,response);
+                    request.getRequestDispatcher("/register.jsp?err=" + URLTools.Encode("邮箱格式错误，再检查下。") + "&name=" + URLTools.Encode(request.getParameter("name")) + "&mail=" + URLTools.Encode(request.getParameter("email"))).forward(request,response);
                     return;
                 }
                 // 开始注册
                 String regBack = Register(request.getParameter("name"), request.getParameter("email"), request.getParameter("password"));
                 if(regBack.equals("EMAIL")) {
-                    request.getRequestDispatcher("/register.jsp?err=" + URL.Encode("这个邮箱已经被注册过了哦") + "&name=" + URL.Encode(request.getParameter("name")) + "&mail=" + URL.Encode(request.getParameter("email"))).forward(request,response);
+                    request.getRequestDispatcher("/register.jsp?err=" + URLTools.Encode("这个邮箱已经被注册过了哦") + "&name=" + URLTools.Encode(request.getParameter("name")) + "&mail=" + URLTools.Encode(request.getParameter("email"))).forward(request,response);
                 } else if(regBack.equals("OK")) {
                     response.getWriter().print("<script> alert(\"注册成功！\"); </script>");
                 } else {
@@ -88,14 +85,13 @@ public class RegPass extends HttpServlet {
                 return "Can't Find Email Lib.";
             }
             // 写入用户信息
-            Statement stmt = SQLConnecter.conn.createStatement();
-            String sql = "INSERT INTO out_user (user_name, email, password) VALUES ('" + name + "', '" + email + "', '" + password + "');";
-            System.out.println("================> " + sql);
-            int back = stmt.executeUpdate(sql);
-            if(back == 1) {
+            String back = User.insert("user_name, email, password", "'" + name + "', '" + email + "', '" + password + "'");
+            if(back.equals("OK")) {
                 return "OK";
-            } else {
+            } else if(back.equals("操作失败！")){
                 return "操作失败！";
+            } else {
+                return back;
             }
         } catch (Throwable th) {
             th.printStackTrace();

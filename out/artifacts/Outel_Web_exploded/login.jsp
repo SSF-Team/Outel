@@ -57,6 +57,7 @@
                         <font id="titPass" style="font-size: 13px;">密码</font>
                         <input name="password" type="password" id="pwd" style="width: 100%;height: 30px;border: 0;outline: 0;" onblur="inputunChoice('labPass', 'titPass')" onFocus="inputChoice('labPass', 'titPass')">
                     </label>
+                    <input name="type" type="type" style="display: none" value="login">
                     <input type="submit" value="登录" class="btn btn-primary" style="width: 100%;background-color: #53a1ff;border: 1px;border-radius: 20px;border-color: #69ADFF;height: 45px;margin-top: 25px;"/>
                 </form>
                 <br><br>
