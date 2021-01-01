@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=gb2312"%>
-<%@ page import="com.outside.outel.ToolClass.errType"%>
+<%@ page import="com.outside.outel.Util.Errs"%>
 
 <!DOCTYPE html>
 <html lang="cn">
@@ -36,7 +36,7 @@
         </font>
         <font style="font-size: 25px;font-family: 'Microsoft YaHei UI';margin-left: 51px;">
             <%
-                errType err = new errType();
+                Errs err = new Errs();
                 out.print(err.getErr(type)[0] + "<br>");
             %>
         </font>
