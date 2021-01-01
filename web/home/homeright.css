@@ -7,7 +7,80 @@ html,body{
 .righthome{
     width: 420px;
     height: 100%;
-    background-color: red;
     position: absolute;
+    padding-left: 30px;
 }
+
+
+
+.OrderFollow{
+    background-color: #F7F9FA;
+    height: auto;
+    width: 348px;
+    border-radius: 20px;
+}
+
+.FirstFloor{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 24px;
+    border-bottom:1px solid #EBEEF0;
+}
+
+.FirstFloor>span{
+    font-family: "Microsoft YaHei";
+    font-weight: bold;
+    color: #000000;
+    font-size: 1.2rem;
+}
+
+.LastFloor{
+    height: 50px;
+    width: 348px;
+    text-align: center;
+}
+.LastFloor>span{
+    font-family: "Microsoft YaHei";
+    font-weight: normal;
+    color: #8C9AA7;
+    font-size: 0.8rem;
+}
+.LastFloor>a{
+    font-family: "Microsoft YaHei";
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: #53A1FF;
+}
+
+.Tuijian{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 50px;
+    width: 318px;
+    border-bottom:1px solid #EBEEF0;
+}
+
+.Search{
+    height: 45px;
+    width: 350px;
+    background-color: #EBEEF0;
+    border-radius: 45px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 

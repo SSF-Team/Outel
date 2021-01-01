@@ -6,11 +6,11 @@ function RightBottomBarClick(name) {
     if(start >= 0) {
         // startTransform(name + 'Button', 0, 0);
         tb.style.transform = "rotate(0deg)";
-        startMover(name, -50, 2);
+        startMover(name, -403, 1);
     } else {
         // startTransform(name + 'Button', 180, 0);
         tb.style.transform = "rotate(180deg)";
-        startMover(name, 0, 2);
+        startMover(name, 0, 1);
     }
 }
 
