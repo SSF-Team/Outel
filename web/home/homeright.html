@@ -12,11 +12,14 @@
 
     <div style="height: 15px"></div>
 <!--  搜索框div  #EBEEF0 350*45  -->
-    <div class="Search">
+    <label class="Search" id="search_lab">
         <img src="../svg/serch.svg" height="18px" width="18px" style="float:left; margin-left: 15px; margin-top: 13px;">
-        <input type="text" style="outline: none; margin-right: 13px; margin-top: 13px;
-        background-color: #EBEEF0; border: none; height: 15px; width: 290px; float: right">
-    </div>
+        <input type="text" id="in_search" style="outline: none; margin-right: 13px; margin-top: 13px;
+        background-color: #EBEEF0; border: none; height: 15px; width: 290px; float: right" onFocus="inputChoice('search_lab', 'in_search', 'search_clear')" onblur="inputunChoice('search_lab', 'in_search', 'search_clear')" oninput="showClear('in_search', 'search_clear')">
+        <button id="search_clear" class="SearchClear" onclick="clearInput('in_search')">
+            <img src="../svg/iconmonstr-x-mark-thin.svg" height="12px" width="12px" style="margin-top: 1px;">
+        </button>
+    </label>
 
     <div style="height: 20px"></div>
 <!--    推荐关注  -->
@@ -167,5 +170,8 @@
         <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">- 苏ICP备20015498号 -</a>
     </div>
 </div>
+
+<script src="home.js"></script>
+
 </body>
 </html>

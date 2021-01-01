@@ -30,15 +30,125 @@ html,body{
     top: 53px;
 }
 
-.outnowbar{
+/*.outnowbar{*/
+/*    width: 598px;*/
+/*    height: auto;*/
+/*    background-color: #ed969e;*/
+/*    padding-top: 5px;*/
+/*    padding-bottom: 5px;*/
+/*    border-bottom:1px solid #EBEEF0;*/
+/*    border-top:1px solid #EBEEF0;*/
+/*}*/
+
+/*.SecondFloor{*/
+/*    padding-left: 15px;*/
+/*    padding-right: 15px;*/
+/*    margin: 0 auto;*/
+/*}*/
+
+/*.leftPhoto{*/
+/*    height: 100px;*/
+/*    width: 49px;*/
+/*    !*overflow: hidden;*!*/
+/*    padding-top: 10px;*/
+/*    position: relative;*/
+
+/*}*/
+
+/*.circle{*/
+/*    border-radius: 50%;*/
+/*    overflow: hidden;*/
+/*}*/
+
+/*.rightOut{*/
+/*    float: right;*/
+/*    top: -100px;*/
+/*    right: -60px;*/
+/*    width: 509px;*/
+/*    height: auto;*/
+/*    background-color: #17a2b8;*/
+/*}*/
+
+/*.TextFiled{*/
+/*    padding-top: 10px;*/
+/*    padding-bottom: 10px;*/
+/*    height: 50px;*/
+/*}*/
+
+.OutNowBar{
     width: 598px;
-    height: 120px;
+    height: auto;
     background-color: #FFFFFF;
     padding-top: 5px;
     padding-bottom: 5px;
     border-bottom:1px solid #EBEEF0;
-    border-top:1px solid #EBEEF0;
 }
+
+.SecondFloor{
+    padding-left: 15px;
+    padding-right: 15px;
+    width: auto;
+    height: auto;
+}
+
+.leftPhoto{
+    height: 49px;
+    width: 49px;
+    margin-right: 10px;
+    position: relative;
+}
+
+.circle{
+    height: 49px;
+    width: 49px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.TextFiled{
+    height: auto;
+    width: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.TextFiled>textarea{
+    position: relative;
+    top: -55px;
+    left: 60px;
+    width: 500px;
+    height: 30px;
+    max-width: 500px;
+    min-width: 500px;
+    background-color: #17a2b8;
+}
+
+.settings{
+    background-color: #ed969e;
+    width: 510px;
+    height: 50px;
+}
+.settings>button:nth-child(1){
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+.settings>button:nth-child(2){
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+.settings>button:nth-child(3){
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
 
 .cutline{
     width: 598px;
@@ -120,4 +230,31 @@ html,body{
     padding-bottom: 10px;
     background-color: #FFFFFF;
     height: 20px;
+}
+
+/*评论图片*/
+.contentPic{
+    position: relative;
+    /*background-color: #ed969e;*/
+    height: 285px;
+    width: 509px;
+    margin: auto;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contentPic>img{
+    position: absolute;
+    height: 100%;
+    margin: auto;
+    /*width: 100%;*/
+    object-fit: cover;
+    transform: scale(1);
+}
+
+.fifTeenPxDiv{
+    height: 15px;
+    background-color: #FFFFFF;
 }

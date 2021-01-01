@@ -1,3 +1,44 @@
+function clearInput(nameInput) {
+    const input = document.getElementById(nameInput);
+    inp.value = "";
+}
+
+function showClear(nameInput, nameClear) {
+    return;
+    const input = document.getElementById(nameInput);
+    const clear = document.getElementById(nameClear);
+    if(input.value.length !== 0) {
+        clear.style.visibility = "visible";
+    } else {
+        clear.style.visibility = "collapse";
+    }
+
+}
+
+function inputChoice(nameBorder, nameInput, nameClear) {
+    const border = document.getElementById(nameBorder);
+    border.style.border = "1px solid #53A1FF";
+    border.style.height = "43px";
+    border.style.background = "#FFFFFF";
+    const input = document.getElementById(nameInput);
+    input.style.background = "#FFFFFF";
+    if(input.value.length !== 0) {
+        const clear = document.getElementById(nameClear);
+        clear.style.visibility = "visible";
+    }
+}
+
+function inputunChoice(nameBorder, nameInput, nameClear) {
+    const border = document.getElementById(nameBorder);
+    border.style.border = "0px";
+    border.style.height = "45px";
+    border.style.background = "#EBEEF0";
+    const input = document.getElementById(nameInput);
+    input.style.background = "#EBEEF0";
+    const clear = document.getElementById(nameClear);
+    clear.style.visibility = "collapse";
+}
+
 function RightBottomBarClick(name) {
     var t=document.getElementById(name);
     var tb=document.getElementById(name + 'Button');
