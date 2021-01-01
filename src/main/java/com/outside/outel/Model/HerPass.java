@@ -1,11 +1,15 @@
 package com.outside.outel.Model;
 
+import com.outside.outel.Dao.User;
 import com.outside.outel.Util.*;
 
+import javax.imageio.ImageIO;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -38,20 +42,42 @@ public class HerPass extends HttpServlet {
                 response.setContentType("text/html;charset=UTF-8");
                 // 检查输入
                 if(request.getParameter("img").isEmpty()) {
-                    request.getRequestDispatcher("/register.jsp?err=" + URLTools.Encode("输入为空，认真点！")).forward(request,response);
+                    request.getRequestDispatcher("/welcome/index.jsp?err=" + URLTools.Encode("没有图片欸！")).forward(request,response);
                     return;
                 }
-                if(!request.getParameter("img").substring(0, 11).equals("data:image/")) {
-                    request.getRequestDispatcher("/register.jsp?err=" + URLTools.Encode("这不是个图片！")).forward(request,response);
+                if(request.getParameter("img").length() < 12 || !request.getParameter("img").substring(0, 11).equals("data:image/")) {
+                    request.getRequestDispatcher("/welcome/index.jsp?err=" + URLTools.Encode("这不是个图片！")).forward(request,response);
                     return;
                 }
                 // 处理图片
+                // 处理你妈
+                // BufferedImage Bfimg = Img.getImangeInPic(Img.getBufferedImage(request.getParameter("img")), 30);
+                // String img = Img.getBase64(Bfimg);
+                // response.getWriter().write("<div id=\"labBg\" style=\"background-image: url("+ img +");width: 100%;height: 100%;background-repeat: no-repeat;\"></div>");
 
+                // 保存图片
+                BufferedImage bfImg = Img.getBufferedImage(request.getParameter("img"));
+                File file =new File("Outel/Avatars");
+                if(!file.exists()  && !file.isDirectory())
+                {
+                    file.mkdir();
+                }
+                File outputFile = new File("Outel/Avatars/" + request.getParameter("id") + ".png");
+                ImageIO.write(bfImg,"png", outputFile);
+
+                // 保存数据库
+                String back = User.UpdateByID("profile='GetAvatars?id=" + request.getParameter("id") + "'", request.getParameter("id"));
+                if(back.equals("OK")) {
+                    response.sendRedirect("/home");
+                } else {
+                    response.sendRedirect("error/error.jsp?err=" + back + "&type=500");
+                }
             } else {
                 // 跳转回 index
                 response.sendRedirect("/login.jsp");
             }
         } catch (Throwable th) {
+            th.printStackTrace();
             // 跳转到 500
             response.sendRedirect("error/error.jsp?err=" + th + "&type=500");
         }

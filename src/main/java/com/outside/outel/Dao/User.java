@@ -120,6 +120,23 @@ public class User {
         }
     }
 
+    public static String UpdateByID(String what, String id) throws SQLException {
+        try {
+            Statement stmt = SQLConnecter.conn.createStatement();
+            String sql = "UPDATE out_user SET " + what + " WHERE user_id = " + id + ";";
+            System.out.println("================> 数据库操作\n" + sql);
+            // 请求查询
+            int back = stmt.executeUpdate(sql);
+            if(back == 1) {
+                return "OK";
+            } else {
+                return "操作失败！";
+            }
+        } catch (Throwable th) {
+            return th.toString();
+        }
+    }
+
     public static String insert(String what, String things) throws SQLException {
         try {
             Statement stmt = SQLConnecter.conn.createStatement();

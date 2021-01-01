@@ -15,7 +15,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -28,6 +28,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
     <orderEntry type="library" name="mysql-connector-java-8.0.22" level="project" />
-    <orderEntry type="library" name="sun.misc.BASE64Decoder" level="project" />
+    <orderEntry type="library" name="Maven: net.coobird:thumbnailator:0.4.8" level="project" />
   </component>
 </module>

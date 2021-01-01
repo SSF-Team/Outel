@@ -18,9 +18,9 @@ import java.util.List;
 public class TokenPass {
 
     public static String Verification(String id, String token) throws SQLException {
-        System.out.println("================> 验证登录");
         // 获取 token
         List<User.SQLVer> infos = User.selectByID("token,token_dietime", id);
+        System.out.println("================> 验证登录");
         String nowTime = Tools.GetDayString(0);
         int pass = 0;
         boolean get = false;
@@ -34,16 +34,19 @@ public class TokenPass {
                 pass ++;
             }
         }
+        String back = "ERR";
         if(get) {
             switch (pass) {
-                case 0: return "FAIL";
-                case 1: return "NO";
-                case 2: return "OK";
-                default: return "ERR";
+                case 0: back = "FAIL"; break;
+                case 1: back = "NO"; break;
+                case 2: back = "OK"; break;
+                default: back = "ERR"; break;
             }
         } else {
-            return "NULL";
+            back = "NULL";
         }
+        System.out.println("Pass Finished：" + back);
+        return back;
     }
 
 }

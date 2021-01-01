@@ -7,6 +7,7 @@ import com.outside.outel.Util.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -119,7 +120,15 @@ public class LoginPass extends HttpServlet {
                             request.getParameter("back").contains("https")) {
                         response.sendRedirect("error/error.jsp?err=You Cant do it out the site&type=403");
                     } else {
-                        request.getRequestDispatcher(request.getParameter("back") + "?back=" + back).forward(request, response);
+                        Map<String, String[]> parameterMap=request.getParameterMap();
+                        StringBuilder parameterStr= new StringBuilder();
+                        for(String key : parameterMap.keySet()){
+                            if(!key.equals("back")) {
+                                parameterStr.append("&").append(key).append("=").append(URLTools.Encode(parameterMap.get(key)[0]));
+                            }
+                        }
+
+                        request.getRequestDispatcher(request.getParameter("back") + "?back=" + back + parameterStr).forward(request, response);
                     }
                 } catch (Throwable th) {
                     th.printStackTrace();

@@ -37,6 +37,7 @@ html,body{
     padding-top: 5px;
     padding-bottom: 5px;
     border-bottom:1px solid #EBEEF0;
+    border-top:1px solid #EBEEF0;
 }
 
 .cutline{
@@ -45,3 +46,78 @@ html,body{
     background-color: #F7F9FA;
 }
 
+/*消息推送 cutline下面*/
+.newspull{
+    width: 568px;
+    height: auto;
+    background-color: #FFFFFF;
+    padding-left: 15px;
+    padding-right: 15px;
+    overflow: hidden;
+    border-bottom:1px solid #EBEEF0;
+}
+/*左侧头像div*/
+.personalPhoto{
+    background-color: #FFFFFF;
+    width: 49px;
+    /*height: 150px;*/
+    /*height: 100%;*/
+    padding-right: 5px;
+    float: left;
+    /*padding-bottom: 2000px;*/
+}
+.mainInfo{
+    width: 510px;
+    height: 20px;
+}
+.mainInfo>a:nth-child(1){
+    font-family: "Microsoft YaHei";
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #0F1419;
+}
+/*actually i dont like this project
+  and this fu***** terrible weather
+  in this bad environment  .
+  by the way something good is happening
+  ,what ever Good Luck .*/
+.mainInfo>img{
+    height: 20px;
+    position: relative;
+    top: 3px
+}
+.mainInfo>a:nth-child(3){
+    font-family: "Microsoft YaHei UI";
+    font-size: 1rem;
+    text-decoration: none;
+    color: #81919F;
+}
+.mainInfo>span{
+    font-family: "Microsoft YaHei UI";
+    font-size: 1rem;
+    color: #81919F;
+    line-height: 20px;
+}
+.content{
+    width: 510px;
+    padding-top: 5px;
+}
+/*内容的文本框*/
+.content>span{
+    font-family: "Microsoft YaHei";
+    font-size: 1rem;
+    color: #0F1419;
+}
+
+.rightContent{
+    width: 510px;
+    float: right;
+}
+
+.huDong{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #FFFFFF;
+    height: 20px;
+}

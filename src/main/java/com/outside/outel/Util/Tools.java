@@ -1,16 +1,9 @@
 package com.outside.outel.Util;
 
-import Decoder.BASE64Decoder;
-
 import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -58,54 +51,7 @@ public class Tools {
     }
 
     /**
-     * @Author Stapxs
-     * @Description TODO 将 Base64 图片保存为文件 From https://www.cnblogs.com/buguge/p/12177895.html
-     * @Date 下午 10:36 2020/12/26
-     * @Param [fileBase64String, filePath, fileName]
-     * @return java.io.File
-     **/
-    public static File convertBase64ToFile(String fileBase64String, String filePath, String fileName) {
-
-        BufferedOutputStream bos = null;
-        FileOutputStream fos = null;
-        File file = null;
-        try {
-            File dir = new File(filePath);
-            if (!dir.exists() && dir.isDirectory()) {//判断文件目录是否存在
-                dir.mkdirs();
-            }
-
-            BASE64Decoder decoder = new BASE64Decoder();
-            byte[] bfile = decoder.decodeBuffer(fileBase64String);
-
-            file = new File(filePath + File.separator + fileName);
-            fos = new FileOutputStream(file);
-            bos = new BufferedOutputStream(fos);
-            bos.write(bfile);
-            return file;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        } finally {
-            if (bos != null) {
-                try {
-                    bos.close();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-            }
-            if (fos != null) {
-                try {
-                    fos.close();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-            }
-        }
-    }
-
-    /**
-     * @Author Stapxs
+     * @Author Stapx Steve
      * @Description TODO 获取连接在一起的8位时间
      * @Date 下午 03:56 2020/12/29
      * @Param [addDay]
@@ -118,4 +64,6 @@ public class Tools {
         SimpleDateFormat sdf =   new SimpleDateFormat( " yyyyMMdd" );
         return sdf.format(now.getTime());
     }
+
+
 }

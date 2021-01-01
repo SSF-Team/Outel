@@ -1,3 +1,10 @@
+<%@ page import="com.outside.outel.Dao.User" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.outside.outel.Service.TokenPass" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="com.outside.outel.Util.URLTools" %>
+<%@ page import="java.util.Map" %>
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 <!DOCTYPE html>
@@ -50,6 +57,63 @@
                             <input accept="image/*" id="upload_file" type="file" style="visibility: hidden" onchange="imgChange(this);">
                         </label>
                         <input type="text" style="visibility: hidden;width: 0;" name="img" id="pImg" value="ERR">
+                        <input type="text" style="visibility: hidden;width: 0;" name="id"
+
+                        <%
+                            String back = request.getParameter("back");
+                            if(back == null) {
+                                Map<String, String[]> parameterMap=request.getParameterMap();
+		                        StringBuilder parameterStr=new StringBuilder();
+		                        for(String key : parameterMap.keySet()){
+		                        	parameterStr.append("&").append(key).append("=").append(URLTools.Encode(parameterMap.get(key)[0]));
+		                        }
+                                response.sendRedirect("../LoginPass?back=welcome" + parameterStr);
+                            } else {
+                                try {
+                                    String[] str = back.split(" ");
+                                    List<User.SQLVer> infos = new ArrayList<>();
+                                    for (String info : str) {
+                                        if (info.contains(":")) {
+                                            String[] inf = info.split(":");
+                                            infos.add(new User.SQLVer(inf[0], inf[1]));
+                                        }
+                                    }
+                                    String id = "";
+                                    String token = "";
+                                    for (User.SQLVer info : infos) {
+                                        if (info.name.equals("ID")) {
+                                            id = info.value;
+                                        }
+                                        if (info.name.equals("UUID")) {
+                                            token = info.value;
+                                        }
+                                    }
+                                    if (!id.equals("") && !token.equals("")) {
+                                        try {
+                                            String pass = TokenPass.Verification(id, token);
+                                            if(pass.equals("FAIL")) {
+                                                response.sendRedirect("../login.jsp?err=" + URLTools.Encode("验证登录失败，请重新登录账户！"));
+                                            } else if(pass.equals("NO")) {
+                                                response.sendRedirect("../login.jsp?err=" + URLTools.Encode("验证登录失败，请重新登录账户！"));
+                                            } else if(pass.equals("OK")) {
+                                                out.print("value=\"" + id + "\"");
+                                            } else {
+                                                response.sendRedirect("../login.jsp?err=" + URLTools.Encode("抱歉操作失败，等会儿再试试？(W1)"));
+                                            }
+                                        } catch (SQLException th) {
+                                            th.printStackTrace();
+                                            response.sendRedirect("error/error.jsp?err=" + back + "&type=500");
+                                        }
+                                    } else {
+                                        response.sendRedirect("../login.jsp?err=" + URLTools.Encode("请登录账户！"));
+                                    }
+                                } catch (Throwable th) {
+                                    th.printStackTrace();
+                                }
+                            }
+                        %>
+
+                        >
                         <font style="font-size: 14px;font-family: 'Microsoft YaHei';margin: auto;margin-top: 70px;">任何人都可以在 Outel 产品中看到您的个人资料照片。 <a href="../privacy/index.html" target="_black">了解详情</a></font>
                     </div>
                 </div>

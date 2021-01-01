@@ -16,7 +16,7 @@ private static final OptionReader opt = new OptionReader();
 
 public boolean ConnectSQL() {
     String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    String DB_URL = "jdbc:mysql://" + opt.GetOpt("SQLAdd") + "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+    String DB_URL = "jdbc:mysql://" + opt.GetOpt("SQLAdd") + "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&autoReconnect=true";
 
     String USER = opt.GetOpt("SQLAcc");
     String PASS = opt.GetOpt("SQLPwd");

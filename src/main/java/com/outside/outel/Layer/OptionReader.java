@@ -25,7 +25,9 @@ public class OptionReader {
 
     public static List<OptVer> optList = new ArrayList<>();
 
-    private static final File optFile = new File("Options.ini");
+
+    private static final File optFileDir =new File("Outel");
+    private static final File optFile = new File("Outel/Options.ini");
 
     public static String GetOpt(String name) {
         for(OptVer opt: optList) {
@@ -37,6 +39,11 @@ public class OptionReader {
     }
 
     public static void ReadOpt() throws IOException {
+        // 检查文件夹是否存在
+        if  (!optFileDir.exists()  && !optFileDir.isDirectory())
+        {
+            optFileDir.mkdir();
+        }
         // 检查配置文件是否存在
         if (!optFile.exists()) {
             // 如果不存在尝试新建（会创建到 Tomcat 的 bin 目录里去）
