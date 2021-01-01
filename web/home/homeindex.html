@@ -33,13 +33,15 @@
                         <img src="../svg/DemoPhoto.jpg" style="height: 49px; width: 49px">
                     </div>
                 </div>
-                <textarea></textarea>
+                <textarea onfocus="if(this.value=='开始你的表演~') {this.value='';}
+                this.style.color='#6E8091';" onblur="if(this.value=='')
+                {this.value='开始你的表演~';this.style.color='#6E8091';}"></textarea>
             </div>
         </div>
 <!--        settings       -->
         <div class="settings">
-            <button><img src="../svg/tupian.svg" height="22px"></button>
-            <button><img src="../svg/GIF.svg" height="22px"></button>
+            <button><img src="../svg/tupian.svg" height="22"></button>
+            <button><img src="../svg/GIF.svg" height="28"></button>
             <button style="background-color: #1DA1F2; border: none; width: 120px; height: 40px;
             font-family: 'Microsoft YaHei'; font-weight: bold; color: #FFFFFF;
             border-radius: 30px; margin-top: 9px;">
