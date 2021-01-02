@@ -1,3 +1,67 @@
+<%@ page import="java.util.Map" %>
+<%@ page import="com.outside.outel.Util.URLTools" %>
+<%@ page import="com.outside.outel.Dao.User" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.outside.outel.Service.TokenPass" %>
+<%@ page import="java.sql.SQLException" %>
+
+<%@ page contentType="text/html; charset=UTF-8"%>
+
+<%
+    String id = "";
+    String token = "";
+    String back = request.getParameter("back");
+    if(back == null) {
+        Map<String, String[]> parameterMap=request.getParameterMap();
+        StringBuilder parameterStr=new StringBuilder();
+        for(String key : parameterMap.keySet()){
+            parameterStr.append("&").append(key).append("=").append(URLTools.Encode(parameterMap.get(key)[0]));
+        }
+        response.sendRedirect("../LoginPass?back=home" + parameterStr);
+    } else {
+        try {
+            String[] str = back.split(" ");
+            List<User.SQLVer> infos = new ArrayList<>();
+            for (String info : str) {
+                if (info.contains(":")) {
+                    String[] inf = info.split(":");
+                    infos.add(new User.SQLVer(inf[0], inf[1]));
+                }
+            }
+            for (User.SQLVer info : infos) {
+                if (info.name.equals("ID")) {
+                    id = info.value;
+                }
+                if (info.name.equals("UUID")) {
+                    token = info.value;
+                }
+            }
+            if (!id.equals("") && !token.equals("")) {
+                try {
+                    String pass = TokenPass.Verification(id, token);
+                    if(pass.equals("FAIL")) {
+                        response.sendRedirect("../login.jsp?err=" + URLTools.Encode("验证登录失败，请重新登录账户！"));
+                    } else if(pass.equals("NO")) {
+                        response.sendRedirect("../login.jsp?err=" + URLTools.Encode("验证登录失败，请重新登录账户！"));
+                    } else if(pass.equals("OK")) {
+
+                    } else {
+                        response.sendRedirect("../login.jsp?err=" + URLTools.Encode("抱歉操作失败，等会儿再试试？(W1)"));
+                    }
+                } catch (SQLException th) {
+                    th.printStackTrace();
+                    response.sendRedirect("error/error.jsp?err=" + back + "&type=500");
+                }
+            } else {
+                response.sendRedirect("../login.jsp?err=" + URLTools.Encode("请登录账户！"));
+            }
+        } catch (Throwable th) {
+            th.printStackTrace();
+        }
+    }
+%>
+
 <!DOCTYPE html>
 <html lang="cn">
 <head>
@@ -5,7 +69,6 @@
     <title>主页 / Outel - 畅所欲言</title>
     <link rel="icon" href="icon.png" sizes="32x32">
     <link rel="stylesheet" href="home.css">
-
 </head>
 <body>
 
@@ -100,6 +163,51 @@
             </button>
 
             <div class="lefthomeSecond">
+                <button class="meButton">
+                    <img src="
+
+                    <%
+                    String name = "user_name";
+                    try {
+                        List<User.SQLVer> hinfo = User.selectByID("profile,user_name", id);
+                        boolean get = false;
+                        for(User.SQLVer info: hinfo) {
+                            if(info.name.equals("profile")) {
+                                get = true;
+                                out.print(info.value);
+                            }
+                            if(info.name.equals("user_name")) {
+                                get = true;
+                                name = info.value;
+                            }
+                        }
+                        if(!get) {
+                            //out.print("../svg/");
+                        }
+                    } catch (SQLException th) {
+                        th.printStackTrace();
+                    }
+                    %>
+
+                    ">
+                    <div>
+                        <font style="font-weight: bold;font-size: 16px;">
+
+                            <%
+                                out.print(name);
+                            %>
+
+                        </font><br>
+                        <font style="font-size: 15px;color: rgba(0,0,0,0.6)">@
+
+                            <%
+                                out.print(name);
+                            %>
+
+                        </font>
+                    </div>
+                    <img src="../svg/more.svg">
+                </button>
             </div>
         </div>
     </div>
@@ -117,7 +225,7 @@
 
     <!--center home-->
     <div class="centerhome">
-    <iframe src="homeindex.html" frameborder="no" border="0" scrolling="auto" width="100%" height="100%"></iframe>
+    <iframe src="homeindex.jsp<%out.print("?back=" + back);%>" id="homeindex" frameborder="no" border="0" width="100%" height="100%"></iframe>
 
 <!--&lt;!&ndash;        Out now &ndash;&gt;-->
 <!--        <div class="outnowbar">-->

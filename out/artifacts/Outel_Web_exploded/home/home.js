@@ -1,3 +1,13 @@
+function changeTextarea(name) {
+    const input = document.getElementById(name);
+    input.style.height = 'auto';
+    if(input.scrollHeight < screen.availHeight - 300) {
+        input.style.height = input.scrollHeight + 'px';
+    } else {
+        input.style.height = (screen.availHeight - 300) + 'px';
+    }
+}
+
 function clearInput(nameInput) {
     const input = document.getElementById(nameInput);
     inp.value = "";

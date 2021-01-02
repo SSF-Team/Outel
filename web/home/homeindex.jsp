@@ -1,3 +1,61 @@
+<%@ page import="java.util.Map" %>
+<%@ page import="com.outside.outel.Util.URLTools" %>
+<%@ page import="com.outside.outel.Dao.User" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.outside.outel.Service.TokenPass" %>
+<%@ page import="java.sql.SQLException" %>
+
+<%@ page contentType="text/html; charset=UTF-8"%>
+
+<%
+    String id = "";
+    String token = "";
+    String back = request.getParameter("back");
+    if(back == null) {
+        Map<String, String[]> parameterMap=request.getParameterMap();
+        StringBuilder parameterStr=new StringBuilder();
+        for(String key : parameterMap.keySet()){
+            parameterStr.append("&").append(key).append("=").append(URLTools.Encode(parameterMap.get(key)[0]));
+        }
+        response.sendRedirect("../LoginPass?back=home" + parameterStr);
+    } else {
+        try {
+            String[] str = back.split(" ");
+            List<User.SQLVer> infos = new ArrayList<>();
+            for (String info : str) {
+                if (info.contains(":")) {
+                    String[] inf = info.split(":");
+                    infos.add(new User.SQLVer(inf[0], inf[1]));
+                }
+            }
+            for (User.SQLVer info : infos) {
+                if (info.name.equals("ID")) {
+                    id = info.value;
+                }
+                if (info.name.equals("UUID")) {
+                    token = info.value;
+                }
+            }
+            if (!id.equals("") && !token.equals("")) {
+                try {
+                    String pass = TokenPass.Verification(id, token);
+                    if(!pass.equals("OK")) {
+                        response.sendRedirect("about:blank");
+                    }
+                } catch (SQLException th) {
+                    th.printStackTrace();
+                    response.sendRedirect("error/error.jsp?err=" + back + "&type=500");
+                }
+            } else {
+                response.sendRedirect("../login.jsp?err=" + URLTools.Encode("请登录账户！"));
+            }
+        } catch (Throwable th) {
+            th.printStackTrace();
+        }
+    }
+%>
+
 <!DOCTYPE html>
 <html lang="cn">
 <head>
@@ -6,8 +64,16 @@
     <link rel="icon" href="icon.png" sizes="32x32">
     <link rel="stylesheet" href="homeindex.css">
 </head>
-<body>
 
+<script type="text/javascript">
+    window.onload = function(){
+        // 移动焦点
+        document.getElementById('send_out').focus();
+        document.getElementById('send_out').blur();
+    }
+</script>
+
+<body>
 
 <!--Center Top Bar-->
 <div class="centerTopBar">
@@ -30,12 +96,37 @@
                 <div class="leftPhoto">
                     <!--    控制头像是圆形的div     -->
                     <div class="circle">
-                        <img src="../svg/DemoPhoto.jpg" style="height: 49px; width: 49px">
+                        <img src="
+
+                        <%
+                    String name = "user_name";
+                    try {
+                        List<User.SQLVer> hinfo = User.selectByID("profile,user_name", id);
+                        boolean get = false;
+                        for(User.SQLVer info: hinfo) {
+                            if(info.name.equals("profile")) {
+                                get = true;
+                                out.print(info.value);
+                            }
+                            if(info.name.equals("user_name")) {
+                                get = true;
+                                name = info.value;
+                            }
+                        }
+                        if(!get) {
+                            //out.print("../svg/");
+                        }
+                    } catch (SQLException th) {
+                        th.printStackTrace();
+                    }
+                    %>
+
+                    " style="height: 49px; width: 49px">
                     </div>
                 </div>
-                <textarea onfocus="if(this.value=='开始你的表演~') {this.value='';}
+                <textarea id="send_out" onfocus="if(this.value=='开始你的表演~') {this.value='';}
                 this.style.color='#6E8091';" onblur="if(this.value=='')
-                {this.value='开始你的表演~';this.style.color='#6E8091';}"></textarea>
+                {this.value='开始你的表演~';this.style.color='#6E8091';}" oninput="changeTextarea('send_out')"></textarea>
             </div>
         </div>
 <!--        settings       -->
@@ -436,14 +527,13 @@
     </div>
 
 
+
+
+
+<script src="home.js"></script>
+
+
 </div>
-
-
-
-
-
-
-
 
 </body>
 </html>
