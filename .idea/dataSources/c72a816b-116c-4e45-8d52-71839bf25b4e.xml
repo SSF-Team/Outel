@@ -944,7 +944,26 @@
       <DataType>varchar(60)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <key id="269" parent="229" name="PRIMARY">
+    <column id="269" parent="229" name="reg_time">
+      <Position>11</Position>
+      <Comment>注册日期</Comment>
+      <DataType>varchar(60)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="270" parent="229" name="following">
+      <Position>12</Position>
+      <Comment>我关注的人</Comment>
+      <DataType>varchar(60)|0s</DataType>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="271" parent="229" name="follower">
+      <Position>13</Position>
+      <Comment>关注我的人</Comment>
+      <DataType>varchar(60)|0s</DataType>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <key id="272" parent="229" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>user_id</ColNames>
       <Primary>1</Primary>

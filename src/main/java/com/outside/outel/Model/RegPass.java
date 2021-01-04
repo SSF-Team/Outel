@@ -85,7 +85,7 @@ public class RegPass extends HttpServlet {
                 return "Can't Find Email Lib.";
             }
             // 写入用户信息
-            String back = User.insert("user_name, email, password", "'" + name + "', '" + email + "', '" + password + "'");
+            String back = User.insert("user_name, email, password, reg_time", "'" + name + "', '" + email + "', '" + password + "', '" + Tools.GetDayString(0) + "'");
             if(back.equals("OK")) {
                 return "OK";
             } else if(back.equals("操作失败！")){

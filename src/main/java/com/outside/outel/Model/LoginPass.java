@@ -155,7 +155,7 @@ public class LoginPass extends HttpServlet {
                 return "OK";
             } else {
                 System.out.println("================> 登录操作\n" + info.value + " -> UnPass");
-                return "FALSE";
+                return "FAIL";
             }
         }
         return "FAIL";

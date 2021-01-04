@@ -29,7 +29,7 @@
 
 <body>
 
-<iframe width="100%" height="100%" src="index.html"></iframe>
+<iframe width="100%" height="100%" src="index.jsp"></iframe>
 
 
 <!-- 登录窗口 -->

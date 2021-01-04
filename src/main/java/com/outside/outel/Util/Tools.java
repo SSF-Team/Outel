@@ -1,6 +1,5 @@
 package com.outside.outel.Util;
 
-import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -60,6 +59,21 @@ public class Tools {
     public static String GetDayString(int addDay) {
         Calendar now = Calendar.getInstance();
         now.setTime(new Date());
+        now.set(Calendar.DATE, now.get(Calendar.DATE) + addDay);
+        SimpleDateFormat sdf =   new SimpleDateFormat( " yyyyMMdd" );
+        return sdf.format(now.getTime());
+    }
+
+    /**
+     * @Author Stapx Steve
+     * @Description TODO 获取连接在一起的8位时间
+     * @Date 上午 08:41 2021/1/4
+     * @Param [start, addDay]
+     * @return java.lang.String
+    **/
+    public static String GetDayString(Date start, int addDay) {
+        Calendar now = Calendar.getInstance();
+        now.setTime(start);
         now.set(Calendar.DATE, now.get(Calendar.DATE) + addDay);
         SimpleDateFormat sdf =   new SimpleDateFormat( " yyyyMMdd" );
         return sdf.format(now.getTime());

@@ -241,7 +241,7 @@
 
     <!--right home-->
     <div class="righthome">
-        <iframe src="homeright.html" frameborder="no" border="0" scrolling="auto" width="100%" height="100%"></iframe>
+        <iframe src="homeright.jsp<%out.print("?ID=" + id);%>" frameborder="no" border="0" scrolling="auto" width="100%" height="100%"></iframe>
     </div>
 
 </div>

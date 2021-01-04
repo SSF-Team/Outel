@@ -85,6 +85,44 @@ html,body{
     background: #53A1FF;
 }
 
+.TJCard-Head {
+    height: 49px;
+    width: 49px;
+    overflow:hidden;
+    border-radius: 50%;
+    float: left;
+}
+
+.TJCard-NamePad {
+    float: left;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+.TJCard-Name {
+    font-family: 'Microsoft YaHei';
+    font-weight: bold;
+    font-size: 1rem;
+    color: #3A3E42;
+}
+
+.TJCard-At {
+    font-family: 'Microsoft YaHei';
+    font-size: 1rem;
+    color: #7F909E;
+    font-weight: normal;
+}
+
+.TJCard-But {
+    background-color: #F7F9FA;
+    border: 1px solid #1DA1F2;
+    width: 60px;
+    height: 30px;
+    border-radius: 30px;
+    color: #1DA1F2; font-family: 'Microsoft YaHei';
+    font-weight: bold;
+    margin-top: 9px;
+}
+
 
 
 

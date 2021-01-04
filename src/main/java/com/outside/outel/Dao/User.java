@@ -2,6 +2,7 @@ package com.outside.outel.Dao;
 
 import com.outside.outel.Layer.SQLConnecter;
 
+import java.nio.charset.StandardCharsets;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -27,7 +28,7 @@ public class User {
         }
     }
 
-    public static List<SQLVer> selectByMail(String what, String mail) throws SQLException {
+    public static List<SQLVer> selectByMail(String what, String mail) {
         List<SQLVer> info = new ArrayList<>();
         try {
             Statement stmt = SQLConnecter.conn.createStatement();
@@ -52,7 +53,7 @@ public class User {
         return info;
     }
 
-    public static List<SQLVer> selectByID(String what, String id) throws SQLException {
+    public static List<SQLVer> selectByID(String what, String id) {
         List<SQLVer> info = new ArrayList<>();
         try {
             Statement stmt = SQLConnecter.conn.createStatement();
@@ -77,7 +78,7 @@ public class User {
         return info;
     }
 
-    public static List<SQLVer> selectAll(String what) throws SQLException {
+    public static List<SQLVer> selectAll(String what) {
         List<SQLVer> info = new ArrayList<>();
         if(what.contains(",")) {
             info.add(new SQLVer("ERR", "ONLY ONE"));
@@ -103,7 +104,7 @@ public class User {
         return info;
     }
 
-    public static String UpdateByMail(String what, String mail) throws SQLException {
+    public static String UpdateByMail(String what, String mail) {
         try {
             Statement stmt = SQLConnecter.conn.createStatement();
             String sql = "UPDATE out_user SET " + what + " WHERE email = '" + mail + "';";
@@ -120,7 +121,7 @@ public class User {
         }
     }
 
-    public static String UpdateByID(String what, String id) throws SQLException {
+    public static String UpdateByID(String what, String id) {
         try {
             Statement stmt = SQLConnecter.conn.createStatement();
             String sql = "UPDATE out_user SET " + what + " WHERE user_id = " + id + ";";
@@ -136,8 +137,29 @@ public class User {
             return th.toString();
         }
     }
+    public static String UpdateByID(String what, String id, boolean autoLong) throws SQLException {
+        if(what.contains(",")) {
+            return "ONLY ONE";
+        }
+        String[] things = what.split("=");
+        Statement stmt = SQLConnecter.conn.createStatement();
+        String sql = "ALTER table out_user modify column " + things[0] + " varchar(" + things[1].getBytes(StandardCharsets.UTF_8).length + ")";
+        System.out.println("================> 数据库操作\n" + sql);
+        int back = stmt.executeUpdate(sql);
+        if(back != 1) {
+            return "操作失败！";
+        }
+        sql = "UPDATE out_user SET " + things[0] + "='" + things[1] + "' WHERE user_id = " + id + ";";
+        System.out.println("================> 数据库操作\n" + sql);
+        // 请求查询
+        back = stmt.executeUpdate(sql);
+        if(back != 1) {
+            return "操作失败！";
+        }
+        return "OK";
+    }
 
-    public static String insert(String what, String things) throws SQLException {
+    public static String insert(String what, String things) {
         try {
             Statement stmt = SQLConnecter.conn.createStatement();
             String sql = "INSERT INTO out_user (" + what + ") VALUES (" + things + ");";

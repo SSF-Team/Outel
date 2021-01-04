@@ -29,7 +29,7 @@
 
 <body>
 
-    <iframe width="100%" height="100%" src="index.html"></iframe>
+    <iframe width="100%" height="100%" src="index.jsp"></iframe>
 
     <!-- 注册窗口 -->
     <div class="overlay" id="regPan">
