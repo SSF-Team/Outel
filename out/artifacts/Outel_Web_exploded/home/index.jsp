@@ -210,32 +210,10 @@
         </div>
     </div>
 
-
-
-
-<!--    &lt;!&ndash;Center Top Bar&ndash;&gt;-->
-<!--    <div class="centerTopBar">-->
-<!--        <div>-->
-<!--            <span style="font-family: 'Microsoft YaHei'; font-weight: bold; font-size: 1.2rem; color: #000000; line-height: 53px">主页</span>-->
-<!--            <img src="icon.png" height="37px" style="position: absolute; right: 0px; padding-right: 15px; margin-top: 8px">-->
-<!--        </div>-->
-<!--    </div>-->
-
     <!--center home-->
     <div class="centerhome">
-    <iframe src="homeindex.jsp<%out.print("?back=" + back);%>" id="homeindex" frameborder="no" border="0" width="100%" height="100%"></iframe>
-
-<!--&lt;!&ndash;        Out now &ndash;&gt;-->
-<!--        <div class="outnowbar">-->
-
-<!--        </div>-->
-
-
-<!--&lt;!&ndash;        This is a cut line with #F7F9FA&ndash;&gt;-->
-<!--        <div class="cutline"></div>-->
+        <iframe src="homeindex.jsp<%out.print("?back=" + back);%>" id="homeindex" frameborder="no" scrolling="no" onload="this.height=this.contentWindow.document.documentElement.scrollHeight" border="0" width="100%" height="100%"></iframe>
     </div>
-
-
 
     <!--right home-->
     <div class="righthome">

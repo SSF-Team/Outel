@@ -12,14 +12,13 @@ import java.sql.DriverManager;
 public class SQLConnecter {
 
 public static Connection conn;
-private static final OptionReader opt = new OptionReader();
 
 public boolean ConnectSQL() {
     String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    String DB_URL = "jdbc:mysql://" + opt.GetOpt("SQLAdd") + "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&autoReconnect=true";
+    String DB_URL = "jdbc:mysql://" + OptionReader.GetOpt("SQLAdd") + "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&autoReconnect=true&characterEncoding=utf-8";
 
-    String USER = opt.GetOpt("SQLAcc");
-    String PASS = opt.GetOpt("SQLPwd");
+    String USER = OptionReader.GetOpt("SQLAcc");
+    String PASS = OptionReader.GetOpt("SQLPwd");
 
     try{
         // 注册 JDBC 驱动

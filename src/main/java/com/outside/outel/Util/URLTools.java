@@ -1,6 +1,7 @@
 package com.outside.outel.Util;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @Version: 1.0
@@ -61,7 +62,7 @@ public class URLTools {
             arr[i / 3] = (byte) Integer.parseInt(temp, 16);
         }
         //解码
-        return new String(arr, 0, arr.length, "UTF-8");
+        return new String(arr, 0, arr.length, StandardCharsets.UTF_8);
     }
 
 }

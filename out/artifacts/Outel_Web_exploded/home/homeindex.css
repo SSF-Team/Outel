@@ -1,7 +1,6 @@
 html,body{
-    padding: 0px;
-    margin: 0px;
-    overflow: hidden;
+    padding: 0;
+    margin: 0;
 }
 
 .centerTopBar{
@@ -188,11 +187,11 @@ html,body{
 .personalPhoto{
     background-color: #FFFFFF;
     width: 49px;
-    /*height: 150px;*/
-    /*height: 100%;*/
-    padding-right: 5px;
+    height: 49px;
+    margin-right: 5px;
     float: left;
-    /*padding-bottom: 2000px;*/
+    border-radius: 50%;
+    overflow: hidden;
 }
 .mainInfo{
     width: 510px;
