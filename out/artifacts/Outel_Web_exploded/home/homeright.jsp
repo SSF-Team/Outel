@@ -1,7 +1,6 @@
-<%@ page import="com.outside.outel.Service.GetNewUser" %>
+<%@ page import="com.outside.outel.Service.GetUser" %>
 <%@ page import="com.outside.outel.Dao.User" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.sql.SQLException" %>
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 <!DOCTYPE html>
@@ -50,12 +49,22 @@
         </div>
 
         <%
+            List<User.SQLVer> following = User.selectByID("following", request.getParameter("ID"));
+            String [] followed = null;
+            for(User.SQLVer info: following) {
+                if(info.name.equals("following")) {
+                    if(info.value.contains(",")) {
+                        followed = info.value.substring(1).split(",");
+                    }
+                }
+            }
             System.out.println("================> 输出推荐");
-            List<List<User.SQLVer>> gets = GetNewUser.Get();
+            List<List<User.SQLVer>> gets = GetUser.New();
             for(List<User.SQLVer> get: gets) {
                 String profile = "";
                 String name = "";
                 String id = "";
+                boolean isFollowed = false;
                 for (User.SQLVer info : get) {
                     if (info.name.equals("profile")) {
                         profile = info.value;
@@ -68,25 +77,51 @@
                     }
                 }
                 // System.out.println(name + "/" + id);
+                if(followed != null){
+                    for (String idGet : followed) {
+                        if (idGet.equals(id)) {
+                            isFollowed = true;
+                            break;
+                        }
+                    }
+                }
                 if(profile.equals("''")) {
                     profile = "/svg/def.png";
                 }
                 if (!name.equals("") && !id.equals(request.getParameter("ID"))) {
-                    out.print("" +
-                            "       <div class=\"Tuijian\">" +
-                            "           <div>" +
-                            "               <div class=\"TJCard-Head\"><img src=\"" + profile + "\" height=\"49\" width=\"49\"></div>" +
-                            "               <div class=\"TJCard-NamePad\">" +
-                            "                   <span class=\"TJCard-Name\">" + name + "</span>" +
-                            "                   <br>" +
-                            "                   <span class=\"TJCard-At\">@" + name + "</span>" +
-                            "               </div>" +
-                            "               <div style=\"float: right\">\n" +
-                            "                    <button class=\"TJCard-But\">关注</button>\n" +
-                            "                </div>\n" +
-                            "            </div>\n" +
-                            "        </div>"
-                    );
+                    if(isFollowed) {
+                        out.print("" +
+                                "       <div class=\"Tuijian\">" +
+                                "           <div>" +
+                                "               <div class=\"TJCard-Head\"><img src=\"" + profile + "\" height=\"49\" width=\"49\"></div>" +
+                                "               <div class=\"TJCard-NamePad\">" +
+                                "                   <span class=\"TJCard-Name\">" + name + "</span>" +
+                                "                   <br>" +
+                                "                   <span class=\"TJCard-At\">@" + name + "</span>" +
+                                "               </div>" +
+                                "               <div style=\"float: right\">\n" +
+                                "                    <button class=\"TJCard-But\" style=\"background: #1DA1F2;color: #FFFFFF;\">已关注</button>\n" +
+                                "                </div>\n" +
+                                "            </div>\n" +
+                                "        </div>"
+                        );
+                    } else {
+                        out.print("" +
+                                "       <div class=\"Tuijian\">" +
+                                "           <div>" +
+                                "               <div class=\"TJCard-Head\"><img src=\"" + profile + "\" height=\"49\" width=\"49\"></div>" +
+                                "               <div class=\"TJCard-NamePad\">" +
+                                "                   <span class=\"TJCard-Name\">" + name + "</span>" +
+                                "                   <br>" +
+                                "                   <span class=\"TJCard-At\">@" + name + "</span>" +
+                                "               </div>" +
+                                "               <div style=\"float: right\">\n" +
+                                "                    <button class=\"TJCard-But\" onclick=\"window.location.href='/Follow?follow=" + id + "'\">关注</button>\n" +
+                                "                </div>\n" +
+                                "            </div>\n" +
+                                "        </div>"
+                        );
+                    }
                 }
             }
         %>

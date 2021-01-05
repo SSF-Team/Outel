@@ -168,8 +168,7 @@
 
                     <%
                     String name = "user_name";
-                    try {
-                        List<User.SQLVer> hinfo = User.selectByID("profile,user_name", id);
+                    List<User.SQLVer> hinfo = User.selectByID("profile,user_name", id);
                         boolean get = false;
                         for(User.SQLVer info: hinfo) {
                             if(info.name.equals("profile")) {
@@ -184,9 +183,6 @@
                         if(!get) {
                             //out.print("../svg/");
                         }
-                    } catch (SQLException th) {
-                        th.printStackTrace();
-                    }
                     %>
 
                     ">

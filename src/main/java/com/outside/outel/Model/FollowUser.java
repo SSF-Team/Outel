@@ -37,7 +37,7 @@ public class FollowUser extends HttpServlet {
             for(String key : parameterMap.keySet()){
                 parameterStr.append("&").append(key).append("=").append(URLTools.Encode(parameterMap.get(key)[0]));
             }
-            response.sendRedirect("../LoginPass?back=Follow" + parameterMap);
+            response.sendRedirect("../LoginPass?back=Follow" + parameterStr);
         } else {
             String back = request.getParameter("back");
             try {
@@ -51,7 +51,7 @@ public class FollowUser extends HttpServlet {
                         infos.add(new User.SQLVer(inf[0], inf[1]));
                     }
                 }
-                for (User.SQLVer info : infos) {
+                for (User.SQLVer info : infos) { 
                     if (info.name.equals("ID")) {
                         id = info.value;
                     }
@@ -63,7 +63,9 @@ public class FollowUser extends HttpServlet {
                     try {
                         String pass = TokenPass.Verification(id, token);
                         if(pass.equals("OK")) {
-                            String backFollow = Follow.set("id", request.getParameter("follow"));
+                            String backFollow = Follow.set(id, request.getParameter("follow"));
+                            System.out.println(backFollow);
+                            response.sendRedirect("/home/homeright.jsp?ID=" + id);
                         }
                     } catch (SQLException th) {
                         th.printStackTrace();

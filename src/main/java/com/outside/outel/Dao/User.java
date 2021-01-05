@@ -81,7 +81,7 @@ public class User {
     public static List<SQLVer> selectAll(String what) {
         List<SQLVer> info = new ArrayList<>();
         if(what.contains(",")) {
-            info.add(new SQLVer("ERR", "ONLY ONE"));
+            info.add(new SQLVer("ERR", "selectAll ONLY ONE"));
             return info;
         }
         try {
@@ -138,23 +138,23 @@ public class User {
         }
     }
     public static String UpdateByID(String what, String id, boolean autoLong) throws SQLException {
-        if(what.contains(",")) {
-            return "ONLY ONE";
-        }
+        // if(what.contains(",")) {
+        //     return "UpdateByID ONLY ONE";
+        // }
         String[] things = what.split("=");
         Statement stmt = SQLConnecter.conn.createStatement();
-        String sql = "ALTER table out_user modify column " + things[0] + " varchar(" + things[1].getBytes(StandardCharsets.UTF_8).length + ")";
-        System.out.println("================> 数据库操作\n" + sql);
-        int back = stmt.executeUpdate(sql);
-        if(back != 1) {
-            return "操作失败！";
-        }
-        sql = "UPDATE out_user SET " + things[0] + "='" + things[1] + "' WHERE user_id = " + id + ";";
+        // String sql = "ALTER table out_user modify column " + things[0] + " varchar(" + things[1].getBytes(StandardCharsets.UTF_8).length + ");";
+        // System.out.println("================> 数据库操作\n" + sql);
+        // int back = stmt.executeUpdate(sql);
+        // if(back != 1) {
+        //     return "操作失败！(1)";
+        // }
+        String sql = "UPDATE out_user SET " + things[0] + "='" + things[1] + "' WHERE user_id = " + id + ";";
         System.out.println("================> 数据库操作\n" + sql);
         // 请求查询
-        back = stmt.executeUpdate(sql);
+        int back = stmt.executeUpdate(sql);
         if(back != 1) {
-            return "操作失败！";
+            return "操作失败！(2)";
         }
         return "OK";
     }
