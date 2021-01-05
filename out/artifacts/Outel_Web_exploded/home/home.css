@@ -45,6 +45,7 @@ html,body{
 
 /*左上logo*/
 .lefthomeLogo{
+   padding-top: 12px;
     height: 47px;
     padding-bottom: 0px;
     padding-left: 15px;
@@ -156,6 +157,7 @@ html,body{
     outline-color: transparent;
     border: none;
     background: transparent;
+    cursor: pointer;
 }
 .meButton:hover {
     background: rgba(83, 161, 255, 0.07);
@@ -183,5 +185,42 @@ html,body{
     text-align: left;
     margin-top: 5px;
 }
+
+.im_not_WenLi{
+    width: 260px;
+    background-color: #FFFFFF;
+    height: 120px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 18px;
+    bottom: 75px;
+    position: fixed;
+    box-shadow: 0px 0px 15px -9px #333333;
+}
+
+.im_not_WenLi>div:nth-child(1){
+    height: 50px;
+    border-bottom: 1px solid #EBEEF0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+}
+
+.im_not_WenLi>div:nth-child(2){
+    height: 19px;
+    padding: 15px;
+}
+
+.im_not_WenLi>div:nth-child(2)>span{
+    font-family: "Microsoft YaHei";
+    color: #0F1419;
+    font-size: 1rem;
+}
+
+
+
+
 
 
