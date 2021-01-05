@@ -5,6 +5,8 @@
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="com.outside.outel.Util.URLTools" %>
 <%@ page import="java.util.Map" %>
+<%@ page import="com.outside.outel.Dao.Dao" %>
+
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 <!DOCTYPE html>
@@ -71,16 +73,16 @@
                             } else {
                                 try {
                                     String[] str = back.split(" ");
-                                    List<User.SQLVer> infos = new ArrayList<>();
+                                    List<Dao.SQLVer> infos = new ArrayList<>();
                                     for (String info : str) {
                                         if (info.contains(":")) {
                                             String[] inf = info.split(":");
-                                            infos.add(new User.SQLVer(inf[0], inf[1]));
+                                            infos.add(new Dao.SQLVer(inf[0], inf[1]));
                                         }
                                     }
                                     String id = "";
                                     String token = "";
-                                    for (User.SQLVer info : infos) {
+                                    for (Dao.SQLVer info : infos) {
                                         if (info.name.equals("ID")) {
                                             id = info.value;
                                         }

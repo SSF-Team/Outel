@@ -5,6 +5,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.outside.outel.Service.TokenPass" %>
 <%@ page import="java.sql.SQLException" %>
+<%@ page import="com.outside.outel.Dao.Dao" %>
 
 <%@ page contentType="text/html; charset=UTF-8"%>
 
@@ -22,14 +23,14 @@
     } else {
         try {
             String[] str = back.split(" ");
-            List<User.SQLVer> infos = new ArrayList<>();
+            List<Dao.SQLVer> infos = new ArrayList<>();
             for (String info : str) {
                 if (info.contains(":")) {
                     String[] inf = info.split(":");
-                    infos.add(new User.SQLVer(inf[0], inf[1]));
+                    infos.add(new Dao.SQLVer(inf[0], inf[1]));
                 }
             }
-            for (User.SQLVer info : infos) {
+            for (Dao.SQLVer info : infos) {
                 if (info.name.equals("ID")) {
                     id = info.value;
                 }
@@ -68,8 +69,8 @@
 <script type="text/javascript">
     window.onload = function(){
         // 移动焦点
-        document.getElementById('send_out').focus();
-        document.getElementById('send_out').blur();
+        document.getElementById('outs').focus();
+        document.getElementById('outs').blur();
     }
 </script>
 
@@ -89,53 +90,66 @@
     <!--        Out now -->
     <div class="OutNowBar">
 <!--   第二层的div     -->
-        <div class="SecondFloor">
-        <!--          右侧文本域-->
-            <div class="TextFiled">
-                <!--          左侧的头像div  -->
-                <div class="leftPhoto">
-                    <!--    控制头像是圆形的div     -->
-                    <div class="circle">
-                        <img src="
+        <form action="/OutNow" method="post" onsubmit="return checkForm();">
+            <div class="SecondFloor">
+            <!--          右侧文本域-->
+                <div class="TextFiled">
+                    <!--          左侧的头像div  -->
+                    <div class="leftPhoto">
+                        <!--    控制头像是圆形的div     -->
+                        <div class="circle">
+                            <img src="
 
-                        <%
-                    String name = "user_name";
-                    List<User.SQLVer> hinfo = User.selectByID("profile,user_name", id);
-                        boolean get = false;
-                        for(User.SQLVer info: hinfo) {
-                            if(info.name.equals("profile")) {
-                                get = true;
-                                out.print(info.value);
+                            <%
+                        String name = "user_name";
+                        List<Dao.SQLVer> hinfo = User.selectByID("profile,user_name", id);
+                            boolean get = false;
+                            for(Dao.SQLVer info: hinfo) {
+                                if(info.name.equals("profile")) {
+                                    get = true;
+                                    out.print(info.value);
+                                }
+                                if(info.name.equals("user_name")) {
+                                    get = true;
+                                    name = info.value;
+                                }
                             }
-                            if(info.name.equals("user_name")) {
-                                get = true;
-                                name = info.value;
+                            if(!get) {
+                                //out.print("../svg/");
                             }
-                        }
-                        if(!get) {
-                            //out.print("../svg/");
-                        }
-                    %>
+                        %>
 
-                    " style="height: 49px; width: 49px">
+                        " style="height: 49px; width: 49px">
+                        </div>
                     </div>
+                    <textarea id="outs" onfocus="if(this.value=='开始你的表演~') {this.value='';}
+                    this.style.color='#6E8091';" onblur="if(this.value=='')
+                    {this.value='开始你的表演~';this.style.color='#6E8091';}" oninput="changeTextarea('outs')"></textarea>
                 </div>
-                <textarea id="send_out" onfocus="if(this.value=='开始你的表演~') {this.value='';}
-                this.style.color='#6E8091';" onblur="if(this.value=='')
-                {this.value='开始你的表演~';this.style.color='#6E8091';}" oninput="changeTextarea('send_out')"></textarea>
             </div>
-        </div>
-<!--        settings       -->
-        <div class="settings">
-            <button><img src="../svg/tupian.svg" height="22"></button>
-            <button><img src="../svg/GIF.svg" height="28"></button>
-            <button style="background-color: #1DA1F2; border: none; width: 120px; height: 40px;
-            font-family: 'Microsoft YaHei'; font-weight: bold; color: #FFFFFF;
-            border-radius: 30px; margin-top: 9px;">
-                Out Now !
-            </button>
-        </div>
+<!--            settings       -->
+            <div class="settings">
+                <button><img src="../svg/tupian.svg" height="22"></button>
+                <button><img src="../svg/GIF.svg" height="28"></button>
+                <input type="submit" class="outButton" value="Out Now !">
+            </div>
+            <%
+                out.print("\n" +
+                        "                <input type=\"text\" id=\"ID\" style=\"visibility: collapse;\" value=" + id + ">\n" +
+                        "                <input type=\"text\" id=\"UUID\" style=\"visibility: collapse;\" value=" + token + ">");
+            %>
+        </form>
     </div>
+
+    <script>
+        function checkForm(){
+            var out= document.getElementById('outs');
+            if(out.value === "" || out.value === "开始你的表演~") {
+                return false;
+            }
+            return true;
+        }
+    </script>
 
 
     <!--        This is a cut line with #F7F9FA-->

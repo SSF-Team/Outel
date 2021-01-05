@@ -1,6 +1,8 @@
 package com.outside.outel.Service;
 
+import com.outside.outel.Dao.Dao;
 import com.outside.outel.Dao.User;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -24,8 +26,8 @@ public class Follow {
         // 获取 Following, Follower
         String following = "";
         String follower = "";
-        List<User.SQLVer> list = User.selectByID("following", id);
-        for(User.SQLVer info: list) {
+        List<Dao.SQLVer> list = User.selectByID("following", id);
+        for(Dao.SQLVer info: list) {
             if(info.name.equals("following")) {
                 following = info.value;
                 if(following.equals("''")) {
@@ -34,7 +36,7 @@ public class Follow {
             }
         }
          list = User.selectByID("follower", followId);
-        for(User.SQLVer info: list) {
+        for(Dao.SQLVer info: list) {
             if(info.name.equals("follower")) {
                 follower = info.value;
                 if(follower.equals("''")) {
@@ -60,8 +62,8 @@ public class Follow {
         // 获取 Following, Follower
         String following = "";
         String follower = "";
-        List<User.SQLVer> list = User.selectByID("following", id);
-        for (User.SQLVer info : list) {
+        List<Dao.SQLVer> list = User.selectByID("following", id);
+        for (Dao.SQLVer info : list) {
             if (info.name.equals("following")) {
                 following = info.value;
                 if (following.equals("''")) {
@@ -70,7 +72,7 @@ public class Follow {
             }
         }
         list = User.selectByID("follower", followId);
-        for (User.SQLVer info : list) {
+        for (Dao.SQLVer info : list) {
             if (info.name.equals("follower")) {
                 follower = info.value;
                 if (follower.equals("''")) {

@@ -1,5 +1,6 @@
 package com.outside.outel.Service;
 
+import com.outside.outel.Dao.Dao;
 import com.outside.outel.Dao.User;
 import com.outside.outel.Layer.OptionReader;
 import com.outside.outel.Util.Talk;
@@ -19,12 +20,12 @@ public class TokenPass {
 
     public static String Verification(String id, String token) throws SQLException {
         // 获取 token
-        List<User.SQLVer> infos = User.selectByID("token,token_dietime", id);
+        List<Dao.SQLVer> infos = User.selectByID("token,token_dietime", id);
         System.out.println("================> 验证登录");
         String nowTime = Tools.GetDayString(0);
         int pass = 0;
         boolean get = false;
-        for(User.SQLVer info: infos) {
+        for(Dao.SQLVer info: infos) {
             System.out.println("> " + info.name + " : " + info.value);
             get = true;
             if(info.name.equals("token") && info.value.equals(token)) {

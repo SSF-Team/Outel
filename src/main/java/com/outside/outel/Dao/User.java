@@ -1,7 +1,7 @@
 package com.outside.outel.Dao;
 
 import com.outside.outel.Layer.SQLConnecter;
-
+import com.outside.outel.Dao.Dao;
 import java.nio.charset.StandardCharsets;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,18 +18,8 @@ import java.util.List;
  **/
 public class User {
 
-    public static class SQLVer {
-        public String name;
-        public String value;
-
-        public SQLVer(String name, String value) {
-            this.name = name;
-            this.value = value;
-        }
-    }
-
-    public static List<SQLVer> selectByMail(String what, String mail) {
-        List<SQLVer> info = new ArrayList<>();
+    public static List<Dao.SQLVer> selectByMail(String what, String mail) {
+        List<Dao.SQLVer> info = new ArrayList<>();
         try {
             Statement stmt = SQLConnecter.conn.createStatement();
             String sql = "SELECT " + what + " from out_user WHERE email = '" + mail + "';";
@@ -42,19 +32,19 @@ public class User {
                 String[] names = what.split(",");
                 for(String name: names) {
                     String get = rs.getString(name);
-                    info.add(new SQLVer(name, get));
+                    info.add(new Dao.SQLVer(name, get));
                 }
             }
         } catch (Throwable th) {
-            info.add(new SQLVer("ERR", th.toString()));
+            info.add(new Dao.SQLVer("ERR", th.toString()));
             return info;
         }
-        info.add(new SQLVer("ERR", "UNKNOWN"));
+        info.add(new Dao.SQLVer("ERR", "UNKNOWN"));
         return info;
     }
 
-    public static List<SQLVer> selectByID(String what, String id) {
-        List<SQLVer> info = new ArrayList<>();
+    public static List<Dao.SQLVer> selectByID(String what, String id) {
+        List<Dao.SQLVer> info = new ArrayList<>();
         try {
             Statement stmt = SQLConnecter.conn.createStatement();
             String sql = "SELECT " + what + " from out_user WHERE user_id = " + id + ";";
@@ -67,21 +57,21 @@ public class User {
                 String[] names = what.split(",");
                 for(String name: names) {
                     String get = rs.getString(name);
-                    info.add(new SQLVer(name, get));
+                    info.add(new Dao.SQLVer(name, get));
                 }
             }
         } catch (Throwable th) {
-            info.add(new SQLVer("ERR", th.toString()));
+            info.add(new Dao.SQLVer("ERR", th.toString()));
             return info;
         }
-        info.add(new SQLVer("ERR", "UNKNOWN"));
+        info.add(new Dao.SQLVer("ERR", "UNKNOWN"));
         return info;
     }
 
-    public static List<SQLVer> selectAll(String what) {
-        List<SQLVer> info = new ArrayList<>();
+    public static List<Dao.SQLVer> selectAll(String what) {
+        List<Dao.SQLVer> info = new ArrayList<>();
         if(what.contains(",")) {
-            info.add(new SQLVer("ERR", "selectAll ONLY ONE"));
+            info.add(new Dao.SQLVer("ERR", "selectAll ONLY ONE"));
             return info;
         }
         try {
@@ -94,13 +84,13 @@ public class User {
             while(rs.next()){
                 // 通过字段检索
                 String get = rs.getString(what);
-                info.add(new SQLVer(what, get));
+                info.add(new Dao.SQLVer(what, get));
             }
         } catch (Throwable th) {
-            info.add(new SQLVer("ERR", th.toString()));
+            info.add(new Dao.SQLVer("ERR", th.toString()));
             return info;
         }
-        info.add(new SQLVer("ERR", "UNKNOWN"));
+        info.add(new Dao.SQLVer("ERR", "UNKNOWN"));
         return info;
     }
 

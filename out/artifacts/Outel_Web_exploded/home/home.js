@@ -1,3 +1,12 @@
+function showMenu(name) {
+    const menu = document.getElementById(name);
+    if(menu.style.visibility === "collapse") {
+        menu.style.visibility = "visible";
+    } else {
+        menu.style.visibility = "collapse";
+    }
+}
+
 function changeTextarea(name) {
     const input = document.getElementById(name);
     input.style.height = 'auto';

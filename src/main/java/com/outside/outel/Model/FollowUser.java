@@ -1,6 +1,6 @@
 package com.outside.outel.Model;
 
-import com.outside.outel.Dao.User;
+import com.outside.outel.Dao.Dao;
 import com.outside.outel.Service.Follow;
 import com.outside.outel.Service.TokenPass;
 import com.outside.outel.Util.URLTools;
@@ -44,14 +44,14 @@ public class FollowUser extends HttpServlet {
                 String[] str = back.split(" ");
                 String id = "";
                 String token = "";
-                List<User.SQLVer> infos = new ArrayList<>();
+                List<Dao.SQLVer> infos = new ArrayList<>();
                 for (String info : str) {
                     if (info.contains(":")) {
                         String[] inf = info.split(":");
-                        infos.add(new User.SQLVer(inf[0], inf[1]));
+                        infos.add(new Dao.SQLVer(inf[0], inf[1]));
                     }
                 }
-                for (User.SQLVer info : infos) { 
+                for (Dao.SQLVer info : infos) { 
                     if (info.name.equals("ID")) {
                         id = info.value;
                     }

@@ -1,5 +1,6 @@
 package com.outside.outel.Model;
 
+import com.outside.outel.Dao.Dao;
 import com.outside.outel.Dao.User;
 import com.outside.outel.Util.*;
 
@@ -55,7 +56,7 @@ public class RegPass extends HttpServlet {
                 if(regBack.equals("EMAIL")) {
                     request.getRequestDispatcher("/register.jsp?err=" + URLTools.Encode("这个邮箱已经被注册过了哦") + "&name=" + URLTools.Encode(request.getParameter("name")) + "&mail=" + URLTools.Encode(request.getParameter("email"))).forward(request,response);
                 } else if(regBack.equals("OK")) {
-                    response.getWriter().print("<script> alert(\"注册成功！\"); </script>");
+                    response.sendRedirect("/welcome");
                 } else {
                     response.sendRedirect("error/error.jsp?err=" + regBack + "&type=500");
                 }
@@ -72,9 +73,9 @@ public class RegPass extends HttpServlet {
     private String Register(String name, String email, String password) {
         try {
             // 查询用户列表是否有重复的邮箱
-            List<User.SQLVer> infos = User.selectAll("email");
+            List<Dao.SQLVer> infos = User.selectAll("email");
             boolean get = false;
-            for(User.SQLVer info: infos) {
+            for(Dao.SQLVer info: infos) {
                 get = true;
                 if(info.value.equals(email)) {
                     System.out.println("================> 注册操作\n" + email + " -> Pass");

@@ -276,3 +276,25 @@ html,body{
     height: 15px;
     background-color: #FFFFFF;
 }
+
+.outButton {
+    background-color: #1DA1F2;
+    border: none;
+    width: 120px;
+    height: 40px;
+    font-family: 'Microsoft YaHei';
+    font-weight: bold;
+    color: #FFFFFF;
+    border-radius: 30px;
+    margin-top: -5px;
+    float: right;
+    margin-right: 15px;
+    outline: none;
+    cursor: pointer;
+}
+.outButton:hover {
+    background-color: #1c99e5;
+}
+.outButton:active {
+    background-color: #1c92db;
+}

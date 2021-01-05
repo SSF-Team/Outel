@@ -1,5 +1,6 @@
 <%@ page import="com.outside.outel.Service.GetUser" %>
 <%@ page import="com.outside.outel.Dao.User" %>
+<%@ page import="com.outside.outel.Dao.Dao" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8"%>
 
@@ -49,9 +50,9 @@
         </div>
 
         <%
-            List<User.SQLVer> following = User.selectByID("following", request.getParameter("ID"));
+            List<Dao.SQLVer> following = User.selectByID("following", request.getParameter("ID"));
             String [] followed = null;
-            for(User.SQLVer info: following) {
+            for(Dao.SQLVer info: following) {
                 if(info.name.equals("following")) {
                     if(info.value.contains(",")) {
                         followed = info.value.substring(1).split(",");
@@ -59,13 +60,13 @@
                 }
             }
             System.out.println("================> 输出推荐");
-            List<List<User.SQLVer>> gets = GetUser.New();
-            for(List<User.SQLVer> get: gets) {
+            List<List<Dao.SQLVer>> gets = GetUser.New();
+            for(List<Dao.SQLVer> get: gets) {
                 String profile = "";
                 String name = "";
                 String id = "";
                 boolean isFollowed = false;
-                for (User.SQLVer info : get) {
+                for (Dao.SQLVer info : get) {
                     if (info.name.equals("profile")) {
                         profile = info.value;
                     }

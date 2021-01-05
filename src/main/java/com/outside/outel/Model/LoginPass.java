@@ -2,6 +2,7 @@ package com.outside.outel.Model;
 
 import com.outside.outel.Dao.*;
 import com.outside.outel.Layer.OptionReader;
+import com.outside.outel.Service.LoginOut;
 import com.outside.outel.Util.*;
 
 import java.io.IOException;
@@ -63,8 +64,8 @@ public class LoginPass extends HttpServlet {
                             cookie.setDomain(OptionReader.GetOpt("Domain"));
                             response.addCookie(cookie);
                             // 获取 ID
-                            List<User.SQLVer> infos = User.selectByMail("user_id", request.getParameter("account"));
-                            for (User.SQLVer info : infos) {
+                            List<Dao.SQLVer> infos = User.selectByMail("user_id", request.getParameter("account"));
+                            for (Dao.SQLVer info : infos) {
                                 if (info.name.equals("user_id")) {
                                     cookie = new Cookie("ID", info.value);
                                     cookie.setMaxAge(24 * 60 * 60 * 30);  // 有效期一个月
@@ -135,6 +136,41 @@ public class LoginPass extends HttpServlet {
                     // 跳转到 500
                     response.sendRedirect("error/error.jsp?err=" + th + "&type=500");
                 }
+            } else if(request.getParameter("type").equals("out")) {
+                try {
+                    System.out.println("================> 获取 Token");
+                    // 返回 Cookie,id
+                    StringBuilder back = new StringBuilder();
+                    int get = 0;
+                    String UUID = "";
+                    String ID = "";
+                    Cookie[] cookies = request.getCookies();
+                    for (Cookie cookie : cookies) {
+                        switch (cookie.getName()) {
+                            case "UUID":
+                                UUID = cookie.getValue();
+                                get++;
+                                break;
+                            case "ID":
+                                ID = cookie.getValue();
+                                get++;
+                            default:
+                                break;
+                        }
+                    }
+                    if (get == 0) {
+                        response.sendRedirect("/Login.jsp");
+                        return;
+                    }
+                    String backOut = LoginOut.set(ID, UUID);
+                    if(backOut.equals("OK")) {
+                        response.sendRedirect("/");
+                    }
+                } catch (Throwable th) {
+                    th.printStackTrace();
+                    // 跳转到 500
+                    response.sendRedirect("error/error.jsp?err=" + th + "&type=500");
+                }
             } else {
                 response.sendRedirect("/Login.jsp");
             }
@@ -148,8 +184,8 @@ public class LoginPass extends HttpServlet {
      * @return java.lang.String
     **/
     private String Login(String acc, String password) throws SQLException {
-        List<User.SQLVer> infos = User.selectByMail("password", acc);
-        for(User.SQLVer info: infos) {
+        List<Dao.SQLVer> infos = User.selectByMail("password", acc);
+        for(Dao.SQLVer info: infos) {
             if(info.name.equals("password") && info.value.equals(password)) {
                 System.out.println("================> 登录操作\n" + info.value + " -> Pass");
                 return "OK";
