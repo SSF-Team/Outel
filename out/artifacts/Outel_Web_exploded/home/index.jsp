@@ -181,7 +181,7 @@
                             }
                         }
                         if(!get) {
-                            //out.print("../svg/");
+                            out.print("/svg/def.png");
                         }
                     %>
 

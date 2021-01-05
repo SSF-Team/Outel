@@ -63,9 +63,15 @@ public class FollowUser extends HttpServlet {
                     try {
                         String pass = TokenPass.Verification(id, token);
                         if(pass.equals("OK")) {
-                            String backFollow = Follow.set(id, request.getParameter("follow"));
-                            System.out.println(backFollow);
-                            response.sendRedirect("/home/homeright.jsp?ID=" + id);
+                            if(request.getParameter("type").equals("fl")) {
+                                String backFollow = Follow.set(id, request.getParameter("follow"));
+                                System.out.println(backFollow);
+                                response.sendRedirect("/home/homeright.jsp?ID=" + id);
+                            } else if(request.getParameter("type").equals("uf")){
+                                String backFollow = Follow.delete(id, request.getParameter("follow"));
+                                System.out.println(backFollow);
+                                response.sendRedirect("/home/homeright.jsp?ID=" + id);
+                            }
                         }
                     } catch (SQLException th) {
                         th.printStackTrace();
