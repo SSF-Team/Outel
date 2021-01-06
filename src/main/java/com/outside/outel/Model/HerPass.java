@@ -66,7 +66,7 @@ public class HerPass extends HttpServlet {
                 ImageIO.write(bfImg,"png", outputFile);
 
                 // 保存数据库
-                String back = User.UpdateByID("profile='GetAvatars?id=" + request.getParameter("id") + "'", request.getParameter("id"));
+                String back = User.UpdateByID("profile='/GetAvatars?id=" + request.getParameter("id") + "'", request.getParameter("id"));
                 if(back.equals("OK")) {
                     response.sendRedirect("/home");
                 } else {

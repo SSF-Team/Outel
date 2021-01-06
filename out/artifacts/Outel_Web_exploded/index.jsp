@@ -5,53 +5,55 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.outside.outel.Service.TokenPass" %>
 <%@ page import="java.sql.SQLException" %>
+<%@ page import="com.outside.outel.Service.LoginOut" %>
+<%@ page import="com.outside.outel.Dao.Dao" %>
 
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 <%
-    String id = "";
-    String token = "";
-    String back = request.getParameter("back");
-    if(back == null) {
-        Map<String, String[]> parameterMap=request.getParameterMap();
-        StringBuilder parameterStr=new StringBuilder();
-        for(String key : parameterMap.keySet()){
-            parameterStr.append("&").append(key).append("=").append(URLTools.Encode(parameterMap.get(key)[0]));
-        }
-        response.sendRedirect("../LoginPass?back=home" + parameterStr);
-    } else {
-        try {
-            String[] str = back.split(" ");
-            List<User.SQLVer> infos = new ArrayList<>();
-            for (String info : str) {
-                if (info.contains(":")) {
-                    String[] inf = info.split(":");
-                    infos.add(new User.SQLVer(inf[0], inf[1]));
-                }
-            }
-            for (User.SQLVer info : infos) {
-                if (info.name.equals("ID")) {
-                    id = info.value;
-                }
-                if (info.name.equals("UUID")) {
-                    token = info.value;
-                }
-            }
-            if (!id.equals("") && !token.equals("")) {
-                try {
-                    String pass = TokenPass.Verification(id, token);
-                    if(pass.equals("OK")) {
-                        response.sendRedirect("/home");
-                    }
-                } catch (SQLException th) {
-                    th.printStackTrace();
-                    response.sendRedirect("error/error.jsp?err=" + back + "&type=500");
-                }
-            }
-        } catch (Throwable th) {
-            th.printStackTrace();
-        }
-    }
+//    String id = "";
+//    String token = "";
+//    String back = request.getParameter("back");
+//    if(back == null) {
+//        Map<String, String[]> parameterMap=request.getParameterMap();
+//        StringBuilder parameterStr=new StringBuilder();
+//        for(String key : parameterMap.keySet()){
+//            parameterStr.append("&").append(key).append("=").append(URLTools.Encode(parameterMap.get(key)[0]));
+//        }
+//        response.sendRedirect("../LoginPass?back=home" + parameterStr);
+//    } else {
+//        try {
+//            String[] str = back.split(" ");
+//            List<Dao.SQLVer> infos = new ArrayList<>();
+//            for (String info : str) {
+//                if (info.contains(":")) {
+//                    String[] inf = info.split(":");
+//                    infos.add(new Dao.SQLVer(inf[0], inf[1]));
+//                }
+//            }
+//            for (Dao.SQLVer info : infos) {
+//                if (info.name.equals("ID")) {
+//                    id = info.value;
+//                }
+//                if (info.name.equals("UUID")) {
+//                    token = info.value;
+//                }
+//            }
+//            if (!id.equals("") && !token.equals("")) {
+//                try {
+//                    String pass = TokenPass.Verification(id, token);
+//                    if(pass.equals("OK")) {
+//                        response.sendRedirect("/home");
+//                    }
+//                } catch (SQLException th) {
+//                    th.printStackTrace();
+//                    response.sendRedirect("error/error.jsp?err=" + back + "&type=500");
+//                }
+//            }
+//        } catch (Throwable th) {
+//            th.printStackTrace();
+//        }
+//    }
 %>
 
 <!DOCTYPE html>

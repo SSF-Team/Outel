@@ -1,5 +1,6 @@
 <%@ page import="com.outside.outel.Service.GetUser" %>
 <%@ page import="com.outside.outel.Dao.User" %>
+<%@ page import="com.outside.outel.Dao.Dao" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8"%>
 
@@ -49,9 +50,9 @@
         </div>
 
         <%
-            List<User.SQLVer> following = User.selectByID("following", request.getParameter("ID"));
+            List<Dao.SQLVer> following = User.selectByID("following", request.getParameter("ID"));
             String [] followed = null;
-            for(User.SQLVer info: following) {
+            for(Dao.SQLVer info: following) {
                 if(info.name.equals("following")) {
                     if(info.value.contains(",")) {
                         followed = info.value.substring(1).split(",");
@@ -59,13 +60,13 @@
                 }
             }
             System.out.println("================> 输出推荐");
-            List<List<User.SQLVer>> gets = GetUser.New();
-            for(List<User.SQLVer> get: gets) {
+            List<List<Dao.SQLVer>> gets = GetUser.New();
+            for(List<Dao.SQLVer> get: gets) {
                 String profile = "";
                 String name = "";
                 String id = "";
                 boolean isFollowed = false;
-                for (User.SQLVer info : get) {
+                for (Dao.SQLVer info : get) {
                     if (info.name.equals("profile")) {
                         profile = info.value;
                     }
@@ -100,7 +101,7 @@
                                 "                   <span class=\"TJCard-At\">@" + name + "</span>" +
                                 "               </div>" +
                                 "               <div style=\"float: right\">\n" +
-                                "                    <button class=\"TJCard-But\" style=\"background: #1DA1F2;color: #FFFFFF;\">已关注</button>\n" +
+                                "                    <button class=\"TJCard-But\" style=\"background: #1DA1F2;color: #FFFFFF;cursor:pointer;outline:none;\" onclick=\"window.location.href='/Follow?type=uf&follow=" + id + "'\">已关注</button>\n" +
                                 "                </div>\n" +
                                 "            </div>\n" +
                                 "        </div>"
@@ -116,7 +117,7 @@
                                 "                   <span class=\"TJCard-At\">@" + name + "</span>" +
                                 "               </div>" +
                                 "               <div style=\"float: right\">\n" +
-                                "                    <button class=\"TJCard-But\" onclick=\"window.location.href='/Follow?follow=" + id + "'\">关注</button>\n" +
+                                "                    <button class=\"TJCard-But\" style=\"cursor:pointer;outline:none;\" onclick=\"window.location.href='/Follow?type=fl&follow=" + id + "'\">关注</button>\n" +
                                 "                </div>\n" +
                                 "            </div>\n" +
                                 "        </div>"

@@ -1,5 +1,30 @@
-function changeTextarea(name) {
-    const input = document.getElementById(name);
+function checkForm(name){
+    const out = document.getElementById(name);
+    if(out.value !== "" || out.value !== "开始你的表演~") {
+        out.value = encodeURI(out.value);
+    }
+    return !(out.value === "" || out.value === "开始你的表演~");
+}
+
+function showMenu(name) {
+    const menu = document.getElementById(name);
+    if(menu.style.visibility === "collapse") {
+        menu.style.visibility = "visible";
+    } else {
+        menu.style.visibility = "collapse";
+    }
+}
+
+function changeTextarea(nameInpit, nameButton) {
+    const input = document.getElementById(nameInpit);
+    const button = document.getElementById(nameButton);
+    if(input.value.length * 3 > 1000) {
+        button.setAttribute("disabled", "true");
+        button.style.background = "#8ED8F9";
+    } else {
+        button.removeAttribute("disabled");
+        button.style.background = "#1DA1F2";
+    }
     input.style.height = 'auto';
     if(input.scrollHeight < screen.availHeight - 300) {
         input.style.height = input.scrollHeight + 'px';

@@ -1,6 +1,7 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="com.outside.outel.Util.URLTools" %>
 <%@ page import="com.outside.outel.Dao.User" %>
+<%@ page import="com.outside.outel.Dao.Dao" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.outside.outel.Service.TokenPass" %>
@@ -22,14 +23,14 @@
     } else {
         try {
             String[] str = back.split(" ");
-            List<User.SQLVer> infos = new ArrayList<>();
+            List<Dao.SQLVer> infos = new ArrayList<>();
             for (String info : str) {
                 if (info.contains(":")) {
                     String[] inf = info.split(":");
-                    infos.add(new User.SQLVer(inf[0], inf[1]));
+                    infos.add(new Dao.SQLVer(inf[0], inf[1]));
                 }
             }
-            for (User.SQLVer info : infos) {
+            for (Dao.SQLVer info : infos) {
                 if (info.name.equals("ID")) {
                     id = info.value;
                 }
@@ -58,6 +59,21 @@
             }
         } catch (Throwable th) {
             th.printStackTrace();
+        }
+    }
+
+    String name = "user_name";
+    String head = "/svg/def.png";
+    List<Dao.SQLVer> hinfo = User.selectByID("profile,user_name", id);
+    boolean get = false;
+    for(Dao.SQLVer info: hinfo) {
+        if(info.name.equals("profile")) {
+            get = true;
+            head = info.value;
+        }
+        if(info.name.equals("user_name")) {
+            get = true;
+            name = info.value;
         }
     }
 %>
@@ -101,101 +117,74 @@
                 <img src="../svg/outel_no_c.svg" height="35px" style="margin: 0 auto; margin-top: 8.5px;">
             </div>
             <!--    主页 nth-child2-->
-            <div>
-                <div style="width: 120px; padding: 10px">
-                    <img src="../svg/lefthome/zhuye_blue.svg" style="margin-top: 2px;">
-                    <span style="font-family: 'Microsoft YaHei'; font-weight: bold; font-size: 1.4rem; color: #1DA1F2; position:absolute; right: 150px">主页</span>
-                </div>
-            </div>
+            <button class="bonList">
+                <img src="../svg/lefthome/zhuye_blue.svg">
+                <span style="color: #1DA1F2;">主页</span>
+            </button>
             <!--        探索-->
-            <div>
-                <div style="width: 120px; padding: 10px">
-                    <img src="../svg/lefthome/tansuo_black.svg" style="margin-top: 2px;">
-                    <span style="font-family: 'Microsoft YaHei'; font-weight: bold; font-size: 1.4rem; color: #000000; position:absolute; right: 150px">探索</span>
-                </div>
-            </div>
+            <button class="bonList">
+                <img src="../svg/lefthome/tansuo_black.svg">
+                <span>探索</span>
+            </button>
             <!--        通知-->
-            <div>
-                <div style="width: 120px; padding: 10px">
-                    <img src="../svg/lefthome/tongzhi_black.svg" style="margin-top: 2px;">
-                    <span style="font-family: 'Microsoft YaHei'; font-weight: bold; font-size: 1.4rem; color: #000000; position:absolute; right: 150px">通知</span>
-                </div>
-            </div>
+            <button class="bonList">
+                <img src="../svg/lefthome/tongzhi_black.svg">
+                <span>通知</span>
+            </button>
             <!--        私信-->
-            <div>
-                <div style="width: 120px; padding: 10px">
-                    <img src="../svg/lefthome/sixin_black.svg" style="margin-top: 2px;">
-                    <span style="font-family: 'Microsoft YaHei'; font-weight: bold; font-size: 1.4rem; color: #000000; position:absolute; right: 150px">私信</span>
-                </div>
-            </div>
+            <button class="bonList">
+                <img src="../svg/lefthome/sixin_black.svg">
+                <span>私信</span>
+            </button>
             <!--        书签-->
-            <div>
-                <div style="width: 120px; padding: 10px">
-                    <img src="../svg/lefthome/shuqian_black.svg" style="margin-top: 2px;">
-                    <span style="font-family: 'Microsoft YaHei'; font-weight: bold; font-size: 1.4rem; color: #000000; position:absolute; right: 150px">书签</span>
-                </div>
-            </div>
+            <button class="bonList">
+                <img src="../svg/lefthome/shuqian_black.svg">
+                <span>书签</span>
+            </button>
             <!--        列表-->
-            <div>
-                <div style="width: 120px; padding: 10px">
-                    <img src="../svg/lefthome/liebiao_black.svg" style="margin-top: 2px;">
-                    <span style="font-family: 'Microsoft YaHei'; font-weight: bold; font-size: 1.4rem; color: #000000; position:absolute; right: 150px">列表</span>
-                </div>
-            </div>
+            <button class="bonList">
+                <img src="../svg/lefthome/liebiao_black.svg">
+                <span>列表</span>
+            </button>
             <!--        个人资料-->
-            <div>
-                <div style="width: 120px; padding: 10px">
-                    <img src="../svg/lefthome/ziliao_black.svg" style="margin-top: 2px;">
-                    <span style="font-family: 'Microsoft YaHei'; font-weight: bold; font-size: 1.4rem; color: #000000; position:absolute; right: 150px">我的</span>
-                </div>
-            </div>
+            <button class="bonList">
+                <img src="../svg/lefthome/ziliao_black.svg">
+                <span>我的</span>
+            </button>
 
-            <button type="button" class="btn btn-primary" style="cursor: pointer; outline: none; margin-top: 15px; width: 230px;height: 50px; background-color: #1DA1F2;border: 1px;border-radius: 30px;
-            border-color: #1DA1F2; box-shadow: 0px 0px 15px -9px #333333;" onclick="window.location.href='write.jsp'">
+            <button type="button" class="btn btn-primary" style="cursor: pointer; outline: none; margin-top: 35px; width: 230px;height: 60px; background-color: #1DA1F2;border: 1px;border-radius: 60px;
+                    border-color: #1DA1F2; box-shadow: 0px 0px 15px -9px #333333;" onclick="document.body.scrollTop = document.documentElement.scrollTop = 0;">
                 <span style="font-size: 18px;font-family: 'Microsoft YaHei';font-weight: bold; color: #FFFFFF">OUT NOW</span>
             </button>
 
 
 <%--    我不是文丽对话框div        --%>
-            <div class="im_not_WenLi">
+            <div class="im_not_WenLi" style="visibility: collapse;" id="WenLi">
 <%--        用户的个人信息        --%>
                 <div>
                     <div style="border-radius: 50%; height: 49px; width: 49px; overflow: hidden; float: left;">
-                        <img src="../svg/DemoPhoto.jpg" height="49px" width="49px">
+                        <img src="<%out.print(head);%>" height="49px" width="49px">
                     </div>
                     <div style="margin-left: 60px; padding-top: 3px;">
-                        <span>我不是文丽</span><br>
-                        <span style="color: rgba(0,0,0,0.5)">@chuhelan</span>
+                        <span style="font-weight: bold;"><%out.print(name);%></span><br>
+                        <span style="color: rgba(0,0,0,0.5)">@<%out.print(name);%></span>
                     </div>
                 </div>
 <%--         登出@XXXXX       --%>
                 <div>
-                    <span>登出@</span>
+                    <button class="bonLogout" onclick="window.location.href='/LoginPass?type=out'">
+                        <span>登出 @<%out.print(name);%></span>
+                    </button>
                 </div>
 
             </div>
 <%--            --%>
             <div class="lefthomeSecond">
-                <button class="meButton">
+                <button class="meButton" onclick="showMenu('WenLi');">
                     <img src="
 
                     <%
-                    String name = "user_name";
-                    List<User.SQLVer> hinfo = User.selectByID("profile,user_name", id);
-                        boolean get = false;
-                        for(User.SQLVer info: hinfo) {
-                            if(info.name.equals("profile")) {
-                                get = true;
-                                out.print(info.value);
-                            }
-                            if(info.name.equals("user_name")) {
-                                get = true;
-                                name = info.value;
-                            }
-                        }
-                        if(!get) {
-                            //out.print("../svg/");
-                        }
+                    out.print(head);
                     %>
 
                     ">
@@ -221,32 +210,10 @@
         </div>
     </div>
 
-
-
-
-<!--    &lt;!&ndash;Center Top Bar&ndash;&gt;-->
-<!--    <div class="centerTopBar">-->
-<!--        <div>-->
-<!--            <span style="font-family: 'Microsoft YaHei'; font-weight: bold; font-size: 1.2rem; color: #000000; line-height: 53px">主页</span>-->
-<!--            <img src="icon.png" height="37px" style="position: absolute; right: 0px; padding-right: 15px; margin-top: 8px">-->
-<!--        </div>-->
-<!--    </div>-->
-
     <!--center home-->
     <div class="centerhome">
-    <iframe src="homeindex.jsp<%out.print("?back=" + back);%>" id="homeindex" frameborder="no" border="0" width="100%" height="100%"></iframe>
-
-<!--&lt;!&ndash;        Out now &ndash;&gt;-->
-<!--        <div class="outnowbar">-->
-
-<!--        </div>-->
-
-
-<!--&lt;!&ndash;        This is a cut line with #F7F9FA&ndash;&gt;-->
-<!--        <div class="cutline"></div>-->
+        <iframe src="homeindex.jsp<%out.print("?back=" + back);%>" id="homeindex" frameborder="no" scrolling="no" onload="this.height=this.contentWindow.document.documentElement.scrollHeight" border="0" width="100%" height="100%"></iframe>
     </div>
-
-
 
     <!--right home-->
     <div class="righthome">

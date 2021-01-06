@@ -1,6 +1,6 @@
 package com.outside.outel.Service;
 
-import com.outside.outel.Dao.User;
+import com.outside.outel.Dao.Dao;
 import com.outside.outel.Layer.SQLConnecter;
 import com.outside.outel.Util.Tools;
 
@@ -24,10 +24,10 @@ public class GetUser {
      * @Description TODO 获取最近五天内的新用户
      * @Date 上午 10:15 2021/1/4
      * @Param []
-     * @return java.util.List<java.util.List<com.outside.outel.Dao.User.SQLVer>>
+     * @return java.util.List<java.util.List<com.outside.outel.Dao.Dao.SQLVer>>
     **/
-    public static List<List<User.SQLVer>> New() {
-        List<List<User.SQLVer>> all = new ArrayList<>();
+    public static List<List<Dao.SQLVer>> New() {
+        List<List<Dao.SQLVer>> all = new ArrayList<>();
         try {
             Statement stmt = SQLConnecter.conn.createStatement();
             String sql = "SELECT profile,user_name,reg_time,user_id from out_user;";
@@ -38,12 +38,12 @@ public class GetUser {
             System.out.println("================> 检索最近注册");
             int get = 0;
             while(rs.next()){
-                List<User.SQLVer> gets = new ArrayList<>();
+                List<Dao.SQLVer> gets = new ArrayList<>();
                 // 通过字段检索
                 if(Integer.parseInt(rs.getString("reg_time").trim()) >= Integer.parseInt(Tools.GetDayString(-5).trim()) && get < 5) {
-                    gets.add(new User.SQLVer("profile", rs.getString("profile")));
-                    gets.add(new User.SQLVer("user_name", rs.getString("user_name")));
-                    gets.add(new User.SQLVer("user_id", rs.getString("user_id")));
+                    gets.add(new Dao.SQLVer("profile", rs.getString("profile")));
+                    gets.add(new Dao.SQLVer("user_name", rs.getString("user_name")));
+                    gets.add(new Dao.SQLVer("user_id", rs.getString("user_id")));
                     get ++;
                 }
                 all.add(gets);
