@@ -1,3 +1,47 @@
+function listCheck(nameTitle, namePic, changeTo) {
+    let unChech = document.getElementById('tHome');
+    unChech.style.color = "#000000";
+    unChech = document.getElementById('pHome');
+    unChech.src = unChech.src.replace("blue", "black");
+
+    unChech = document.getElementById('tSeach');
+    unChech.style.color = "#000000";
+    unChech = document.getElementById('pSeach');
+    unChech.src = unChech.src.replace("blue", "black");
+
+    unChech = document.getElementById('tInfo');
+    unChech.style.color = "#000000";
+    unChech = document.getElementById('pInfo');
+    unChech.src = unChech.src.replace("blue", "black");
+
+    unChech = document.getElementById('tMsg');
+    unChech.style.color = "#000000";
+    unChech = document.getElementById('pMsg');
+    unChech.src = unChech.src.replace("blue", "black");
+
+    unChech = document.getElementById('tMark');
+    unChech.style.color = "#000000";
+    unChech = document.getElementById('pMark');
+    unChech.src = unChech.src.replace("blue", "black");
+
+    unChech = document.getElementById('tList');
+    unChech.style.color = "#000000";
+    unChech = document.getElementById('pList');
+    unChech.src = unChech.src.replace("blue", "black");
+
+    unChech = document.getElementById('tMe');
+    unChech.style.color = "#000000";
+    unChech = document.getElementById('pMe');
+    unChech.src = unChech.src.replace("blue", "black");
+
+    let cheched = document.getElementById(nameTitle);
+    cheched.style.color = "#1DA1F2";
+    cheched = document.getElementById(namePic);
+    cheched.src = cheched.src.replace("black", "blue");
+    cheched = document.getElementById('homeindex');
+    cheched.src = changeTo;
+}
+
 function checkForm(name){
     const out = document.getElementById(name);
     if(out.value !== "" || out.value !== "开始你的表演~") {

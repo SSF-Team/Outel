@@ -108,4 +108,21 @@ public class Article {
         return info;
     }
 
+    public static String UpdateByArtID(String what, String id) {
+        try {
+            Statement stmt = SQLConnecter.conn.createStatement();
+            String sql = "UPDATE out_article SET " + what + " WHERE article_id = " + id + ";";
+            System.out.println("================> 数据库操作\n" + sql);
+            // 请求查询
+            int back = stmt.executeUpdate(sql);
+            if(back == 1) {
+                return "OK";
+            } else {
+                return "操作失败！";
+            }
+        } catch (Throwable th) {
+            return th.toString();
+        }
+    }
+
 }

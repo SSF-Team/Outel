@@ -101,7 +101,7 @@
                                 "                   <span class=\"TJCard-At\">@" + name + "</span>" +
                                 "               </div>" +
                                 "               <div style=\"float: right\">\n" +
-                                "                    <button class=\"TJCard-But\" style=\"background: #1DA1F2;color: #FFFFFF;cursor:pointer;outline:none;\" onclick=\"window.location.href='/Follow?type=uf&follow=" + id + "'\">已关注</button>\n" +
+                                "                    <button class=\"TJCard-But\" style=\"background: #1DA1F2;color: #FFFFFF;cursor:pointer;outline:none;\" onclick=\"window.location.href='/Follow?type=uf&follow=" + id + "&backto=/home/homeright.jsp?ID=" + request.getParameter("ID") + "'\">已关注</button>\n" +
                                 "                </div>\n" +
                                 "            </div>\n" +
                                 "        </div>"
@@ -117,7 +117,7 @@
                                 "                   <span class=\"TJCard-At\">@" + name + "</span>" +
                                 "               </div>" +
                                 "               <div style=\"float: right\">\n" +
-                                "                    <button class=\"TJCard-But\" style=\"cursor:pointer;outline:none;\" onclick=\"window.location.href='/Follow?type=fl&follow=" + id + "'\">关注</button>\n" +
+                                "                    <button class=\"TJCard-But\" style=\"cursor:pointer;outline:none;\" onclick=\"window.location.href='/Follow?type=fl&follow=" + id + "&backto=/home/homeright.jsp?ID=" + request.getParameter("ID") + "'\">关注</button>\n" +
                                 "                </div>\n" +
                                 "            </div>\n" +
                                 "        </div>"

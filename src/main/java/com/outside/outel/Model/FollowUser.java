@@ -38,6 +38,7 @@ public class FollowUser extends HttpServlet {
                 parameterStr.append("&").append(key).append("=").append(URLTools.Encode(parameterMap.get(key)[0]));
             }
             response.sendRedirect("../LoginPass?back=Follow" + parameterStr);
+            System.out.println(parameterStr);
         } else {
             String back = request.getParameter("back");
             try {
@@ -66,12 +67,12 @@ public class FollowUser extends HttpServlet {
                             if(request.getParameter("type").equals("fl")) {
                                 String backFollow = Follow.set(id, request.getParameter("follow"));
                                 System.out.println(backFollow);
-                                response.sendRedirect("/home/homeright.jsp?ID=" + id);
                             } else if(request.getParameter("type").equals("uf")){
                                 String backFollow = Follow.delete(id, request.getParameter("follow"));
                                 System.out.println(backFollow);
-                                response.sendRedirect("/home/homeright.jsp?ID=" + id);
                             }
+                            System.out.println(request.getParameter("backto"));
+                            response.sendRedirect(request.getParameter("backto") + "&userid=" + id);
                         }
                     } catch (SQLException th) {
                         th.printStackTrace();

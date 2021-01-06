@@ -149,7 +149,7 @@
     <%
         // 输出纯文本 Out
         // 查询数据
-        List<List<Dao.SQLVer>> infos = Article.selectAll("article_id,text,author_id,view_num,post_num,like_num,article_time,article_del");
+        List<List<Dao.SQLVer>> infos = Article.selectAll("article_id,text,author_id,view_num,post_num,liker,article_time,article_del");
         System.out.println("================> 所有文章");
         for(List<Dao.SQLVer> info: infos) {
             for(Dao.SQLVer art: info) {
@@ -177,8 +177,23 @@
               }
           }
       }
+
         // 输出文章
         for(i=0; i<infos.size(); i++) {
+            // 判断是否喜欢过，计算喜欢数量
+            boolean isLike = false;
+            int likeNum = 0;
+            if(infos.get(i).get(5).value.contains(",")) {
+                String[] likes = infos.get(i).get(5).value.trim().split(",");
+                likeNum = likes.length - 1;
+                for(String str: likes) {
+                    if(str.equals(id)) {
+                        isLike = true;
+                        break;
+                    }
+                }
+            }
+
             if(infos.size() < 30 || Integer.parseInt(infos.get(i).get(6).value.trim()) > Integer.parseInt(Tools.GetDayString(-10).trim())){
                 // 处理时间
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
@@ -225,14 +240,14 @@
                                 "        <div class=\"personalPhoto\"><img src=\"" + profile + "\" height=\"49\"></div>\n" +
                                 "        <div class=\"rightContent\">\n" +
                                 "            <div class=\"mainInfo\">\n" +
-                                "                <a href=\"#\" >" + userName + "</a>\n");
-                if(certification.equals("1")) {
-                    out.print(
-                                "                <img src=\"../svg/official.svg\">\n");} else {
-                    out.print(
-                            "                <img>\n");}
-                    out.print(
-                                "                <a href=\"#\">@" + userName + "</a>\n" +
+                                "                <a href=\"personalInfo.jsp?id=" + infos.get(i).get(2).value.trim() + "&userid=" + id + "\" >" + userName + "</a>\n");
+                                if(certification.equals("1")) {
+                                    out.print(
+                                                "                <img src=\"../svg/official.svg\">\n");} else {
+                                    out.print(
+                                            "                <img>\n");}
+                                    out.print(
+                                "                <a href=\"personalInfo.jsp?id=" + infos.get(i).get(2).value.trim() + "&userid=" + id + "\" >@" + userName + "</a>\n" +
                                 "                <span>&nbsp;·&nbsp;" + dateShow + "</span>\n" +
                                 "            </div>\n" +
                                 "            <div class=\"content\">\n" +
@@ -254,11 +269,19 @@
                                                         "0" +
                                                         //infos.get(i).get(1).value.trim() +
                                 "                    </span>\n" +
-                                "                </button>\n" +
-                                "                <button style=\"padding: 0;margin: 0;border: 0;background-color: transparent;outline: none;\">\n" +
-                                "                    <img src=\"../svg/xihuan.svg\" height=\"18\">\n" +
+                                "                </button>\n");
+                                if(!isLike) {
+                                        out.print(
+                                "                <button style=\"padding: 0;margin: 0;border: 0;background-color: transparent;outline: none;cursor: pointer;\" onclick=\"window.location.href='/Like?type=like&artid=" + infos.get(i).get(0).value.trim() + "&backto=/home/homeindex.jsp?back=" + back + "'\">\n" +
+                                "                    <img src=\"../svg/xihuan.svg\" height=\"18\">\n");
+                                        } else {
+                                        out.print(
+                                "                <button style=\"padding: 0;margin: 0;border: 0;background-color: transparent;outline: none;cursor: pointer;\" onclick=\"window.location.href='/Like?type=unlike&artid=" + infos.get(i).get(0).value.trim() + "&backto=/home/homeindex.jsp?back=" + back + "'\">\n" +
+                                "                    <img src=\"../svg/xihuan_checked.svg\" height=\"18\">\n");
+                                        }
+                                        out.print(
                                 "                    <span style=\"position: relative; bottom: 3px; padding-left: 10px; padding-right: 80px; color: #81919F;\">\n" +
-                                                        infos.get(i).get(5).value.trim() +
+                                                        likeNum +
                                 "                    </span>\n" +
                                 "                </button>\n" +
                                 "                <button style=\"padding: 0;margin: 0;border: 0;background-color: transparent;outline: none;\">\n" +

@@ -58,6 +58,13 @@ public class Follow {
         return "OK";
     }
 
+    /**
+     * @Author Stapx Steve
+     * @Description TODO 取关用户
+     * @Date 上午 12:06 2021/1/7
+     * @Param [id, followId]
+     * @return java.lang.String
+    **/
     public static String delete(String id, String followId) throws SQLException {
         // 获取 Following, Follower
         String following = "";
@@ -81,17 +88,27 @@ public class Follow {
             }
         }
         // 写入数据
-        String start = following.substring(0, following.indexOf(followId) - 1);
-        String end = following.substring(following.indexOf(followId) + followId.length());
-        following = start + end;
+        String[] followingList = following.split(",");
+        StringBuilder out = new StringBuilder();
+        for(String info: followingList) {
+            if(!info.equals(followId) && !info.equals("")) {
+                out.append(",").append(info);
+            }
+        }
+        following = out.toString();
         System.out.println(following);
         String back = User.UpdateByID("following=" + following, id, true);
         if(!back.equals("OK")) {
             return back;
         }
-        start = follower.substring(0, follower.indexOf(id) - 1);
-        end = follower.substring((follower.indexOf(id) + id.length()));
-        follower = start + end;
+        String[] followerList = follower.split(",");
+        out = new StringBuilder();
+        for(String info: followerList) {
+            if(!info.equals(id) && !info.equals("")) {
+                out.append(",").append(info);
+            }
+        }
+        follower = out.toString();
         back = User.UpdateByID("follower=" + follower, followId, true);
         if(!back.equals("OK")) {
             return back;
