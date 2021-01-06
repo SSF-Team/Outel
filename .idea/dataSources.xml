@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="SQL_Outel" uuid="c72a816b-116c-4e45-8d52-71839bf25b4e">
-      <driver-ref>mysql.8</driver-ref>
+    <data-source source="LOCAL" name="Amazon Aurora MySQL - @outel.chuhelan.com" uuid="346b1884-b534-4c65-acd9-88d848cdea5e">
+      <driver-ref>mysql_aurora</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://outel.chuhelan.com:3306/outel?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC</jdbc-url>
+      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql:aurora://outel.chuhelan.com:3306</jdbc-url>
     </data-source>
   </component>
 </project>

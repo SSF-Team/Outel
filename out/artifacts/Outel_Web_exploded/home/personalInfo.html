@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>我的 / Outel - 畅所欲言</title>
+    <link rel="icon" href="icon.png" sizes="32x32">
+    <link rel="stylesheet" href="personalInfo.css">
+</head>
+<body>
+    <div class="AboveAll">
+<!--      这个是顶栏       -->
+        <div class="topbar">
+            <button><img src="../svg/personalInfo/backspace.svg"></button>
+            <span>我不是文丽</span>
+        </div>
+<!--        这个是顶栏大图片-->
+        <div class="TopBigImg">
+            <img src="">
+        </div>
+<!--        个人信息的图片-->
+        <div class="PersonalPic">
+            <img src="../svg/DemoPhoto.jpg" height="134">
+        </div>
+<!--        编辑个人资料-->
+        <div class="SetPersonal">
+            <span>编辑个人资料</span>
+        </div>
+<!--        个人资料栏-->
+        <div class="BottomPersonal">
+            <span style="font-family: 'Microsoft YaHei'; font-weight: bold; font-size: 1.2rem;">
+                我不是文丽
+            </span><br>
+            <span style="font-family: 'Microsoft YaHei';color: #8393A1;">
+                @我不是文丽&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
+            <img src="../svg/personalInfo/data.svg" height="18">
+            <span style="color: #8393A1;">
+                2077年6月&nbsp;
+            </span>
+            <span style="color: #8393A1;">
+                加入
+            </span><br>
+            <span style="font-family: 'Microsoft YaHei'; font-weight: bold;line-height: 40px;">
+                &nbsp;666
+                &nbsp;
+            </span>
+            <span style="color: #8393A1;">
+                正在关注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
+            <span style="font-family: 'Microsoft YaHei'; font-weight: bold;">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.3M&nbsp;
+            </span>
+            <span style="color: #8393A1;">
+                关注者
+            </span>
+        </div>
+
+<!--        下面的选项卡 第二次写        -->
+        <div id="div1">
+            <button value="1" index="0">推文</button>
+            <button value="2" index="1">喜欢</button>
+
+
+<!--        内容一 发送的out           -->
+            <div class="content2" style="display: block;">
+                <iframe frameborder="no"  scrolling="no" width="100%" onload="this.height=this.contentWindow.document.documentElement.scrollHeight" src="tuiwen.html"></iframe>
+            </div>
+<!--        内容二 喜欢的out           -->
+            <div class="content2">
+                <iframe frameborder="no"  scrolling="no" width="100%" height="999px" src="like.html"></iframe>
+            </div>
+        </div>
+<!--     底边的文字           -->
+        <div class="bottomDiv">
+            <span>-我们也是有底线的-</span>
+        </div>
+    </div>
+
+
+
+
+<script>
+    window.onload=function(){
+        var oDiv=document.getElementById('div1');
+        var aBtn=oDiv.getElementsByTagName('button');
+        var aDiv=oDiv.getElementsByTagName('div');
+
+        for(var i=0;i<aBtn.length;i++){
+            aBtn[i].index=i;
+            aBtn[i].onclick=function(){
+                for(var i=0;i<aBtn.length;i++){
+                    aBtn[i].className='';
+                    aDiv[i].style.display='none';
+                }
+                this.className='active';
+                aDiv[this.index].style.display='block';
+            };
+        }
+
+    };
+</script>
+
+</body>
+</html>

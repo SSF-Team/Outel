@@ -1,0 +1,134 @@
+html,body{
+    padding: 0px;
+    margin: 0px;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+ul,li{
+    list-style: none;
+}
+.AboveAll{
+    width: 598px;
+    height: auto;
+}
+
+.topbar{
+    height: 53px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-bottom: 1px solid #EBEEF0;
+}
+.topbar>span{
+    font-family: "Microsoft YaHei";
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #0f1419;
+    position: relative;
+    top: 12px;
+}
+.topbar>button{
+    border-style: none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    padding-top: 12px;
+    padding-right: 40px;
+    float: left;
+}
+
+.TopBigImg{
+    height: 200px;
+    overflow: hidden;
+    border-bottom: 1px solid #EBEEF0;
+    background-color: #69ADFF;
+}
+
+.PersonalPic{
+    height: 134px;
+    width: 134px;
+    border-radius: 50%;
+    position: relative;
+    top: -67px;
+    right: -15px;
+    border: 5px solid #FFFFFF;
+    overflow: hidden;
+}
+
+.SetPersonal{
+    width: 120px;
+    height: 40px;
+    border-radius: 40px;
+    font-family: "Microsoft YaHei";
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    border: 1px solid #1DA1F2;
+    position: relative;
+    left: 465px;
+    top: -130px;
+}
+
+.SetPersonal>span{
+    color: #1DA1F2;
+    position: relative;
+    top: 8px;
+}
+
+.BottomPersonal{
+    padding-left: 15px;
+    position: relative;
+    top: -90px;
+    width: auto;
+}
+
+.content2{
+    display: none;
+}
+
+#div1{
+    height: auto;
+    width: 598px;
+    position: relative;
+    top: -80px;
+}
+
+#div1>button:nth-child(1){
+    height: 52px;
+    width: 299px;
+    border-style: none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    font-family: "Microsoft YaHei";
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #1DA1F2;
+    float: left;
+    border-bottom: 3px solid #1DA1F2;
+
+}
+#div1>button:nth-child(2){
+    height: 52px;
+    width: 299px;
+    border-style: none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    font-family: "Microsoft YaHei";
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #5B7083;
+    float: left;
+}
+
+.OutDiv{
+    width: 589px;
+    color: #ed969e;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
