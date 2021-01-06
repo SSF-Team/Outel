@@ -1,0 +1,278 @@
+html,body{
+    padding: 0px;
+    margin: 0px;
+    /*background-color: #F7F9FA;*/
+}
+
+.home{
+    width: 1300px;
+    height:2000px;
+    margin: 0 auto;
+    position: relative;
+    background-color: #F7F9FA;
+}
+
+/*左侧*/
+.lefthome{
+    width: 280px;
+    height: 100%;
+    background-color: #FFFFFF;
+    position: fixed;
+    border-right: 1px solid #EBEEF0;
+}
+/*左第二大框架*/
+.lefthomeFirst{
+    z-index: 998;
+    width: 255px;
+    height: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: absolute;
+}
+/*左底用户*/
+.lefthomeSecond{
+    z-index: 999;
+    width: 255px;
+    height: 59px;
+    position: absolute;
+    bottom: 10px;
+}
+.lefthomeSecond>div:nth-child(2){
+
+}
+
+
+
+/*左上logo*/
+.lefthomeLogo{
+   padding-top: 12px;
+    height: 47px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+}
+/*左中*/
+.lefthomeFirst>div:nth-child(2){
+    height: 47px;
+    width: 255px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+}
+
+/*中间*/
+.centerhome{
+    width: 598px;
+    height: 100%;
+    background-color: white;
+    left: 280px;
+    border:1px solid #EBEEF0;
+    position: absolute;
+}
+
+/*.centerTopBar{*/
+/*    z-index: 999;*/
+/*    height: 53px;*/
+/*    width: 570px;*/
+/*    padding-left: 15px;*/
+/*    padding-right: 13px;*/
+/*    position: absolute;*/
+/*    float: left;*/
+/*    left: 280px;*/
+/*    margin: 0 auto;*/
+/*    background-color: #FFFFFF;*/
+/*    border-right: 1px solid #EBEEF0;*/
+/*    border-left: 1px solid #EBEEF0;*/
+/*}*/
+
+
+
+
+
+.righthome{
+    width: 420px;
+    height: 100%;
+    background-color: #FFFFFF;
+    left: 880px;
+    position: absolute;
+}
+
+
+/*私信*/
+.RightBottomBar{
+    z-index: 999;
+    width: 352px;
+    height: 455px;
+    border-radius: 18px 18px 0px 0px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 15px -9px #333333;
+    position: fixed;
+    bottom: 0px;
+    right: 20px;
+}
+.RightBottomBar>div:first-child{
+    height: 53px;
+    width: 222px;
+    font-family: "Microsoft YaHei";
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding-left: 15px;
+    line-height: 53px;
+}
+.RightBottomBar>div:nth-child(2){
+    height: 37px;
+    width: 37px;
+    padding-right: 15px;
+    position: absolute;
+    right: 0px;
+    top: 15px;
+}
+.RightBottomBar>div:nth-child(3){
+    height: 37px;
+    width: 37px;
+    margin-right: 15px;
+    position: absolute;
+    right: 37px;
+    top: 15px;
+}
+
+
+.outnowbar{
+    width: 598px;
+    height: 120px;
+    background-color: #FFFFFF;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom:1px solid #EBEEF0;
+}
+
+.cutline{
+    width: 598px;
+    height: 10px;
+    background-color: #F7F9FA;
+}
+
+.meButton {
+    width: 100%;
+    height: 100%;
+    border-radius: 60px;
+    outline-color: transparent;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+.meButton:hover {
+    background: rgba(83, 161, 255, 0.07);
+}
+.meButton:active {
+    background: rgba(83, 161, 255, 0.1);
+}
+.meButton > img:nth-child(1) {
+    width: 39px;
+    height: 39px;
+    border-radius: 39px;
+    float: left;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+.meButton > img:nth-child(3) {
+    margin-right: 10px;
+    margin-top: -36px;
+    height: 30px;
+    float: right;
+ }
+.meButton > div:nth-child(2) {
+    height: 70%;
+    margin-left: 55px;
+    text-align: left;
+    margin-top: 5px;
+}
+
+.im_not_WenLi{
+    width: 260px;
+    background-color: #FFFFFF;
+    height: 120px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 18px;
+    bottom: 75px;
+    position: fixed;
+    box-shadow: 0px 0px 15px -9px #333333;
+}
+
+.im_not_WenLi>div:nth-child(1){
+    height: 50px;
+    border-bottom: 1px solid #EBEEF0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+}
+
+.im_not_WenLi>div:nth-child(2){
+    height: 19px;
+}
+
+.im_not_WenLi>div:nth-child(2)>span{
+    font-family: "Microsoft YaHei";
+    color: #0F1419;
+    font-size: 1rem;
+}
+
+.bonLogout {
+    cursor: pointer;
+    outline: none;
+    background: transparent;
+    border: none;
+    border-radius: 0 0 18px 18px;
+    width: 100%;
+    height: 60px;
+}
+.bonLogout:hover {
+    background: rgba(231, 231, 231, 0.5);
+}
+.bonLogout:active {
+    background: rgba(231, 231, 231, 0.7);
+}
+.bonLogout > span {
+    font-size: 1rem;
+    font-family: "Microsoft YaHei";
+    left: 0;
+    position: absolute;
+    margin-top: -10px;
+    margin-left: 20px;
+}
+
+.bonList {
+    width: 140px;
+    height: 50px;
+    outline: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 60px;
+    margin-top: 10px;
+}
+.bonList > span {
+    font-family: 'Microsoft YaHei';
+    font-weight: bold;
+    font-size: 1.4rem;
+    position:absolute;
+    right: 150px;
+    margin-top: 3px;
+}
+.bonList > img {
+    margin-top: 2px;
+    margin-left: -85px;
+}
+
+.bonList:hover {
+    background: rgba(83, 161, 255, 0.07);
+}
+.bonList:active {
+    background: rgba(83, 161, 255, 0.1);
+}
+
+
+
+
+

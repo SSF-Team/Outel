@@ -1,0 +1,119 @@
+html,body{
+    padding: 0px;
+    margin: 0px;
+}
+
+.BiggestDiv{
+    height: auto;
+    width: 598px;
+}
+
+.TopBar{
+    height: 53px;
+    font-family: "Microsoft YaHei UI";
+    font-weight: bold;
+    color: #000000;
+    font-size: 1.3rem;
+    padding-left: 15px;
+    padding-right: 15px;
+    line-height: 53px;
+}
+
+.AllTips{
+    height: 52px;
+    font-family: "Microsoft YaHei UI";
+    font-size: 1.2rem;
+    color: #31A9F3;
+    border-bottom: 3px solid #31A9F3;
+    text-align: center;
+    line-height: 52px;
+}
+
+.Tips{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 59px;
+    border-bottom: 1px solid #EBEEF0;
+}
+
+.ControlTips{
+    margin-right: 10px;
+    height: 59px;
+    width: 49px;
+    float: left;
+}
+
+.FollowTips{
+    font-family: "Microsoft YaHei UI";
+    font-weight: normal;
+    font-size: 1rem;
+    padding-top: 10px;
+}
+
+.FollowTips span{
+    font-family: "Microsoft YaHei";
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.Warning{
+    height: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-bottom: 1px solid #EBEEF0;
+}
+
+.PicTips{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin-left: 5px;
+    margin-right: 5px;
+    overflow: hidden;
+}
+
+.PicTips img{
+    height: 30px;
+    width: 30px;
+    float: left;
+}
+
+.Warning{
+    font-family: "Microsoft YaHei";
+    font-size: 0.9rem;
+    color: #9D70A2;
+    line-height: 40px;
+}
+.Warning img{
+    padding-right: 20px;
+    float: left;
+}
+.Warning span{
+    font-family: "Microsoft YaHei";
+    font-size: 0.9rem;
+    color: #000000;
+}
+
+.recommendation{
+    width: 598px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: auto;
+    border-bottom: 1px solid #EBEEF0;
+}
+
+.NeiRong{
+    font-family: "Microsoft YaHei";
+    font-size: 1rem;
+    color: #5B7083;
+    position: relative;
+    left: 57px;
+    width: 510px;
+    height: auto;
+}
