@@ -212,12 +212,12 @@
 
     <!--center home-->
     <div class="centerhome">
-        <iframe src="homeindex.jsp<%out.print("?back=" + back);%>" id="homeindex" frameborder="no" scrolling="no" onload="this.height=this.contentWindow.document.documentElement.scrollHeight" border="0" width="100%" height="100%"></iframe>
+        <iframe src="homeindex.jsp<%out.print("?back=" + back);%>" id="homeindex" frameborder="no" scrolling="no" onload="this.height=this.contentWindow.document.documentElement.scrollHeight" border="0" width="100%"></iframe>
     </div>
 
     <!--right home-->
     <div class="righthome">
-        <iframe src="homeright.jsp<%out.print("?ID=" + id);%>" frameborder="no" border="0" scrolling="auto" width="100%" height="100%"></iframe>
+        <iframe src="homeright.jsp<%out.print("?ID=" + id);%>" frameborder="no" border="0"scrolling="no" onload="this.height2=this.contentWindow.document.documentElement.scrollHeight" width="100%" height="100%"></iframe>
     </div>
 
 </div>
