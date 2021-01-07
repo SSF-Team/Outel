@@ -1,0 +1,299 @@
+html,body{
+    padding: 0px;
+    margin: 0px;
+}
+
+.centerTopBar{
+    z-index: 999;
+    height: 53px;
+    width: 570px;
+    padding-left: 15px;
+    padding-right: 13px;
+    position: fixed;
+    /*float: left;*/
+    /*left: 280px;*/
+    margin: 0 auto;
+    background-color: #FFFFFF;
+    /*border-right: 1px solid #EBEEF0;*/
+    /*border-left: 1px solid #EBEEF0;*/
+}
+
+/*中间*/
+.centerhome{
+    width: 598px;
+    height: 100%;
+    background-color: #FFFFFF;
+    /*left: 280px;*/
+    border-top:1px solid #EBEEF0;
+    position: absolute;
+    top: 53px;
+}
+
+/*.outnowbar{*/
+/*    width: 598px;*/
+/*    height: auto;*/
+/*    background-color: #ed969e;*/
+/*    padding-top: 5px;*/
+/*    padding-bottom: 5px;*/
+/*    border-bottom:1px solid #EBEEF0;*/
+/*    border-top:1px solid #EBEEF0;*/
+/*}*/
+
+/*.SecondFloor{*/
+/*    padding-left: 15px;*/
+/*    padding-right: 15px;*/
+/*    margin: 0 auto;*/
+/*}*/
+
+/*.leftPhoto{*/
+/*    height: 100px;*/
+/*    width: 49px;*/
+/*    !*overflow: hidden;*!*/
+/*    padding-top: 10px;*/
+/*    position: relative;*/
+
+/*}*/
+
+/*.circle{*/
+/*    border-radius: 50%;*/
+/*    overflow: hidden;*/
+/*}*/
+
+/*.rightOut{*/
+/*    float: right;*/
+/*    top: -100px;*/
+/*    right: -60px;*/
+/*    width: 509px;*/
+/*    height: auto;*/
+/*    background-color: #17a2b8;*/
+/*}*/
+
+/*.TextFiled{*/
+/*    padding-top: 10px;*/
+/*    padding-bottom: 10px;*/
+/*    height: 50px;*/
+/*}*/
+
+.OutNowBar{
+    width: 598px;
+    height: auto;
+    background-color: #FFFFFF;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom:1px solid #EBEEF0;
+}
+
+.SecondFloor{
+    padding-left: 15px;
+    padding-right: 15px;
+    height: auto;
+}
+
+.leftPhoto{
+    height: 49px;
+    width: 49px;
+    margin-right: 10px;
+    /*position: relative;*/
+    float: left;
+}
+
+.circle{
+    height: 49px;
+    width: 49px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.TextFiled{
+    height: auto;
+    width: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.TextFiled>textarea{
+    position: relative;
+    top: 10px;
+    left: 3px;
+    width: 500px;
+    height: 64px;
+    max-width: 500px;
+    min-width: 500px;
+    min-height: 60px;
+    border: none;
+    outline: none;
+    font-family: "Microsoft YaHei";
+    font-size: 1.2rem;
+    color: #000000;
+    resize: none;
+    /*background-color: #17a2b8;*/
+}
+
+.settings{
+    position: relative;
+    width: auto;
+    height: 50px;
+}
+.settings>button:nth-child(1){
+    position: relative;
+    /*移动的距离*/
+    left: 70px;
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+.settings>button:nth-child(2){
+    position: relative;
+    /*移动的距离*/
+    left: 80px;
+    top: 3px;
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+.settings>button:nth-child(3){
+    position: relative;
+    /*移动的距离*/
+    left: 400px;
+    bottom: 5px;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+
+.cutline{
+    width: 598px;
+    height: 10px;
+    background-color: #F7F9FA;
+}
+
+/*消息推送 cutline下面*/
+.newspull{
+    width: 568px;
+    height: auto;
+    background-color: #FFFFFF;
+    padding-left: 15px;
+    padding-right: 15px;
+    overflow: hidden;
+    border-bottom:1px solid #EBEEF0;
+}
+/*左侧头像div*/
+.personalPhoto{
+    background-color: #FFFFFF;
+    width: 49px;
+    height: 49px;
+    margin-right: 5px;
+    float: left;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.mainInfo{
+    width: 510px;
+    height: 20px;
+}
+.mainInfo>a:nth-child(1){
+    font-family: "Microsoft YaHei";
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #0F1419;
+}
+/*actually i dont like this project
+  and this fu***** terrible weather
+  in this bad environment  .
+  by the way something good is happening
+  ,what ever Good Luck .*/
+.mainInfo>img{
+    height: 20px;
+    position: relative;
+    top: 3px
+}
+.mainInfo>a:nth-child(3){
+    font-family: "Microsoft YaHei UI";
+    font-size: 1rem;
+    text-decoration: none;
+    color: #81919F;
+}
+.mainInfo>span{
+    font-family: "Microsoft YaHei UI";
+    font-size: 1rem;
+    color: #81919F;
+    line-height: 20px;
+}
+.content{
+    width: 510px;
+    padding-top: 5px;
+}
+/*内容的文本框*/
+.content>span{
+    font-family: "Microsoft YaHei";
+    font-size: 1rem;
+    color: #0F1419;
+}
+
+.rightContent{
+    width: 510px;
+    float: right;
+}
+
+.huDong{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #FFFFFF;
+    height: 20px;
+}
+
+/*评论图片*/
+.contentPic{
+    position: relative;
+    /*background-color: #ed969e;*/
+    height: 285px;
+    width: 509px;
+    margin: auto;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contentPic>img{
+    position: absolute;
+    height: 100%;
+    margin: auto;
+    /*width: 100%;*/
+    object-fit: cover;
+    transform: scale(1);
+}
+
+.fifTeenPxDiv{
+    height: 15px;
+    background-color: #FFFFFF;
+}
+
+.outButton {
+    background-color: #1DA1F2;
+    border: none;
+    width: 120px;
+    height: 40px;
+    font-family: 'Microsoft YaHei';
+    font-weight: bold;
+    color: #FFFFFF;
+    border-radius: 30px;
+    margin-top: -5px;
+    float: right;
+    margin-right: 15px;
+    outline: none;
+    cursor: pointer;
+}
+.outButton:hover {
+    background-color: #1c99e5;
+}
+.outButton:active {
+    background-color: #1c92db;
+}

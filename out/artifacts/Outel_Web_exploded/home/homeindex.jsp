@@ -7,6 +7,7 @@
 <%@ page import="com.outside.outel.Util.Tools" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.*" %>
+<%@ page import="com.outside.outel.Service.PrintHTML" %>
 
 <%@ page contentType="text/html; charset=UTF-8"%>
 
@@ -64,7 +65,7 @@
     <meta charset="UTF-8">
     <title>HOME / Outel - 畅所欲言</title>
     <link rel="icon" href="icon.png" sizes="32x32">
-    <link rel="stylesheet" href="homeindex.css">
+    <link rel="stylesheet" href="css/homeindex.css">
 </head>
 
 <script type="text/javascript">
@@ -234,63 +235,23 @@
                         certification = info.value;
                     }
                 }
-                out.print(
-                        "<div class=\"newspull\">\n" +
-                                "        <div style=\"width: 569px; padding-top: 10px\"></div>\n" +
-                                "        <div class=\"personalPhoto\"><img src=\"" + profile + "\" height=\"49\"></div>\n" +
-                                "        <div class=\"rightContent\">\n" +
-                                "            <div class=\"mainInfo\">\n" +
-                                "                <a href=\"personalInfo.jsp?id=" + infos.get(i).get(2).value.trim() + "&userid=" + id + "\" >" + userName + "</a>\n");
-                                if(certification.equals("1")) {
-                                    out.print(
-                                                "                <img src=\"../svg/official.svg\">\n");} else {
-                                    out.print(
-                                            "                <img>\n");}
-                                    out.print(
-                                "                <a href=\"personalInfo.jsp?id=" + infos.get(i).get(2).value.trim() + "&userid=" + id + "\" >@" + userName + "</a>\n" +
-                                "                <span>&nbsp;·&nbsp;" + dateShow + "</span>\n" +
-                                "            </div>\n" +
-                                "            <div class=\"content\">\n" +
-                                "                <span>\n" +
-                                                    infos.get(i).get(1).value.trim() +
-                                "                </span>\n" +
-                                "            </div>\n" +
-                                "            <div class=\"huDong\">\n" +
-                                "                <button style=\"padding: 0;margin: 0;border: 0;background-color: transparent;outline: none;\">\n" +
-                                "                    <img src=\"../svg/pinglun.svg\" height=\"18\">\n" +
-                                "                    <span style=\"position: relative; bottom: 3px; padding-left: 10px; padding-right: 80px; color: #81919F;\">\n" +
-                                                        "0" +
-                                                        //infos.get(i).get(1).value.trim() +
-                                "                    </span>\n" +
-                                "                </button>\n" +
-                                "                <button style=\"padding: 0;margin: 0;border: 0;background-color: transparent;outline: none;\">\n" +
-                                "                    <img src=\"../svg/zhuantui.svg\" height=\"18\">\n" +
-                                "                    <span style=\"position: relative; bottom: 3px; padding-left: 10px; padding-right: 80px; color: #81919F;\">\n" +
-                                                        "0" +
-                                                        //infos.get(i).get(1).value.trim() +
-                                "                    </span>\n" +
-                                "                </button>\n");
-                                if(!isLike) {
-                                        out.print(
-                                "                <button style=\"padding: 0;margin: 0;border: 0;background-color: transparent;outline: none;cursor: pointer;\" onclick=\"window.location.href='/Like?type=like&artid=" + infos.get(i).get(0).value.trim() + "&backto=/home/homeindex.jsp?back=" + back + "'\">\n" +
-                                "                    <img src=\"../svg/xihuan.svg\" height=\"18\">\n");
-                                        } else {
-                                        out.print(
-                                "                <button style=\"padding: 0;margin: 0;border: 0;background-color: transparent;outline: none;cursor: pointer;\" onclick=\"window.location.href='/Like?type=unlike&artid=" + infos.get(i).get(0).value.trim() + "&backto=/home/homeindex.jsp?back=" + back + "'\">\n" +
-                                "                    <img src=\"../svg/xihuan_checked.svg\" height=\"18\">\n");
-                                        }
-                                        out.print(
-                                "                    <span style=\"position: relative; bottom: 3px; padding-left: 10px; padding-right: 80px; color: #81919F;\">\n" +
-                                                        likeNum +
-                                "                    </span>\n" +
-                                "                </button>\n" +
-                                "                <button style=\"padding: 0;margin: 0;border: 0;background-color: transparent;outline: none;\">\n" +
-                                "                    <img src=\"../svg/fenxiang.svg\" height=\"18\">\n" +
-                                "                </button>\n" +
-                                "            </div>\n" +
-                                "        </div>\n" +
-                                "    </div>"
-                );
+                out.print(PrintHTML.SmallOut(
+                        userName,
+                        userName,
+                        dateShow,
+                        infos.get(i).get(1).value.trim(),
+                        "",
+                        "0,0," + likeNum,
+                        profile,
+                        "/home/homeindex.jsp?back=" + back,
+                        infos.get(i).get(2).value.trim(),
+                        id,
+                        infos.get(i).get(0).value.trim(),
+                        certification.equals("1"),
+                        false,
+                        isLike,
+                        true
+                ));
             }
         }
         out.print(" <!--    好友内容的部分-->\n" +

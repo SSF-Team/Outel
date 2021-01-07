@@ -53,4 +53,28 @@ public class GetUser {
         }
         return all;
     }
+
+    public static List<List<Dao.SQLVer>> All() {
+        List<List<Dao.SQLVer>> all = new ArrayList<>();
+        try {
+            Statement stmt = SQLConnecter.conn.createStatement();
+            String sql = "SELECT profile,user_name,reg_time,user_id from out_user;";
+            System.out.println("================> 数据库操作\n" + sql);
+            // 请求查询
+            ResultSet rs = stmt.executeQuery(sql);
+            // 展开结果集数据库
+            System.out.println("================> 检索所有用户");
+            while(rs.next()){
+                List<Dao.SQLVer> gets = new ArrayList<>();
+                // 通过字段检索
+                gets.add(new Dao.SQLVer("profile", rs.getString("profile")));
+                gets.add(new Dao.SQLVer("user_name", rs.getString("user_name")));
+                gets.add(new Dao.SQLVer("user_id", rs.getString("user_id")));
+                all.add(gets);
+            }
+        } catch (Throwable th) {
+            th.printStackTrace();
+        }
+        return all;
+    }
 }

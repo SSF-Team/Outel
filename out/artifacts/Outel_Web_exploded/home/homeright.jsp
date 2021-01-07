@@ -2,6 +2,7 @@
 <%@ page import="com.outside.outel.Dao.User" %>
 <%@ page import="com.outside.outel.Dao.Dao" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.outside.outel.Service.PrintHTML" %>
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 <!DOCTYPE html>
@@ -10,7 +11,7 @@
     <meta charset="UTF-8">
     <title>搜索 / Outel - 畅所欲言</title>
     <link rel="icon" href="icon.png" sizes="32x32">
-    <link rel="stylesheet" href="homeright.css">
+    <link rel="stylesheet" href="css/homeright.css">
 </head>
 <body>
 
@@ -90,39 +91,15 @@
                     profile = "/svg/def.png";
                 }
                 if (!name.equals("") && !id.equals(request.getParameter("ID"))) {
-                    if(isFollowed) {
-                        out.print("" +
-                                "       <div class=\"Tuijian\">" +
-                                "           <div>" +
-                                "               <div class=\"TJCard-Head\"><img src=\"" + profile + "\" height=\"49\" width=\"49\"></div>" +
-                                "               <div class=\"TJCard-NamePad\">" +
-                                "                   <span class=\"TJCard-Name\">" + name + "</span>" +
-                                "                   <br>" +
-                                "                   <span class=\"TJCard-At\">@" + name + "</span>" +
-                                "               </div>" +
-                                "               <div style=\"float: right\">\n" +
-                                "                    <button class=\"TJCard-But\" style=\"background: #1DA1F2;color: #FFFFFF;cursor:pointer;outline:none;\" onclick=\"window.location.href='/Follow?type=uf&follow=" + id + "&backto=/home/homeright.jsp?ID=" + request.getParameter("ID") + "'\">已关注</button>\n" +
-                                "                </div>\n" +
-                                "            </div>\n" +
-                                "        </div>"
-                        );
-                    } else {
-                        out.print("" +
-                                "       <div class=\"Tuijian\">" +
-                                "           <div>" +
-                                "               <div class=\"TJCard-Head\"><img src=\"" + profile + "\" height=\"49\" width=\"49\"></div>" +
-                                "               <div class=\"TJCard-NamePad\">" +
-                                "                   <span class=\"TJCard-Name\">" + name + "</span>" +
-                                "                   <br>" +
-                                "                   <span class=\"TJCard-At\">@" + name + "</span>" +
-                                "               </div>" +
-                                "               <div style=\"float: right\">\n" +
-                                "                    <button class=\"TJCard-But\" style=\"cursor:pointer;outline:none;\" onclick=\"window.location.href='/Follow?type=fl&follow=" + id + "&backto=/home/homeright.jsp?ID=" + request.getParameter("ID") + "'\">关注</button>\n" +
-                                "                </div>\n" +
-                                "            </div>\n" +
-                                "        </div>"
-                        );
-                    }
+                    out.print(PrintHTML.UserCard(
+                            name,
+                            name,
+                            profile,
+                            id,
+                            "/home/homeright.jsp?ID=" + request.getParameter("ID"),
+                            "318",
+                            isFollowed
+                    ));
                 }
             }
         %>

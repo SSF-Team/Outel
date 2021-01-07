@@ -272,6 +272,24 @@ html,body{
     background: rgba(83, 161, 255, 0.1);
 }
 
+.bonSave {
+    float: right;
+    width: 95px;
+    height: 41px;
+    margin-top: 42px;
+    border-radius: 45px;
+    outline: none;
+    border: 1px solid #1DA1F2;
+    background: #1DA1F2;
+    color: white;
+}
+.bonSave:hover {
+    background: #1e9cea;
+}
+.bonSave:active {
+    background: #1d95e0;
+}
+
 
 
 

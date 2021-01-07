@@ -84,7 +84,7 @@
     <meta charset="UTF-8">
     <title>主页 / Outel - 畅所欲言</title>
     <link rel="icon" href="icon.png" sizes="32x32">
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
@@ -123,12 +123,12 @@
                 <span id="tHome" style="color: #1DA1F2;">主页</span>
             </button>
             <!--        探索-->
-            <button class="bonList" onclick="listCheck('tSeach', 'pSeach', '');">
+            <button class="bonList" onclick="listCheck('tSeach', 'pSeach', 'explore.jsp<%out.print("?ID=" + id);%>');">
                 <img id="pSeach" src="../svg/lefthome/tansuo_black.svg">
                 <span id="tSeach">探索</span>
             </button>
             <!--        通知-->
-            <button class="bonList" onclick="listCheck('tInfo', 'pInfo', '');">
+            <button class="bonList" onclick="listCheck('tInfo', 'pInfo', 'notifications.jsp');">
                 <img id="pInfo" src="../svg/lefthome/tongzhi_black.svg">
                 <span id="tInfo">通知</span>
             </button>
@@ -138,7 +138,7 @@
                 <span id="tMsg">私信</span>
             </button>
             <!--        书签-->
-            <button class="bonList" onclick="listCheck('tMark', 'pMark', '');">
+            <button class="bonList" onclick="listCheck('tMark', 'pMark', 'bookmarks.html');">
                 <img id="pMark" src="../svg/lefthome/shuqian_black.svg">
                 <span id="tMark">书签</span>
             </button>
@@ -213,7 +213,15 @@
 
     <!--center home-->
     <div class="centerhome">
-        <iframe src="homeindex.jsp<%out.print("?back=" + back);%>" id="homeindex" frameborder="no" scrolling="no" onload="this.height=this.contentWindow.document.documentElement.scrollHeight" border="0" width="100%"></iframe>
+        <%
+        if(request.getParameter("user") != null) {
+            out.print("        <iframe src=\"personalInfo.jsp?id=" + request.getParameter("user") + "&userid=" + id + "\" id=\"homeindex\" frameborder=\"no\" scrolling=\"no\" onload=\"this.height=this.contentWindow.document.documentElement.scrollHeight\" border=\"0\" width=\"100%\"></iframe>");
+        } else if(request.getParameter("status") != null){
+
+        } else {
+            out.print("        <iframe src=\"homeindex.jsp?back=" + back + "\" id=\"homeindex\" frameborder=\"no\" scrolling=\"no\" onload=\"this.height=this.contentWindow.document.documentElement.scrollHeight\" border=\"0\" width=\"100%\"></iframe>");
+        }
+    %>
     </div>
 
     <!--right home-->

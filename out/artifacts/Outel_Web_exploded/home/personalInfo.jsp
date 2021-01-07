@@ -7,6 +7,7 @@
 <%@ page import="com.outside.outel.Dao.User" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
+
 <%@ page contentType="text/html; charset=UTF-8"%><!DOCTYPE html>
 
 <html lang="cn">
@@ -14,7 +15,7 @@
     <meta charset="UTF-8">
     <title>我的 / Outel - 畅所欲言</title>
     <link rel="icon" href="icon.png" sizes="32x32">
-    <link rel="stylesheet" href="personalInfo.css">
+    <link rel="stylesheet" href="css/personalInfo.css">
 </head>
 
 <%

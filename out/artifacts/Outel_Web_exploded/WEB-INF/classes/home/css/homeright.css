@@ -1,0 +1,137 @@
+html,body{
+    padding: 0px;
+    margin: 0px;
+}
+
+.righthome{
+    width: 420px;
+    height: 100%;
+    position: absolute;
+    padding-left: 30px;
+}
+
+
+
+.OrderFollow{
+    background-color: #F7F9FA;
+    height: auto;
+    width: 348px;
+    border-radius: 20px;
+}
+
+.FirstFloor{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 24px;
+    border-bottom:1px solid #EBEEF0;
+}
+
+.FirstFloor>span{
+    font-family: "Microsoft YaHei";
+    font-weight: bold;
+    color: #000000;
+    font-size: 1.2rem;
+}
+
+.LastFloor{
+    height: 50px;
+    width: 348px;
+    text-align: center;
+}
+.LastFloor>span{
+    font-family: "Microsoft YaHei";
+    font-weight: normal;
+    color: #8C9AA7;
+    font-size: 0.8rem;
+}
+.LastFloor>a{
+    font-family: "Microsoft YaHei";
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: #53A1FF;
+}
+
+.Tuijian{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 50px;
+    width: 318px;
+    border-bottom:1px solid #EBEEF0;
+}
+
+.Search{
+    height: 45px;
+    width: 350px;
+    background-color: #EBEEF0;
+    border-radius: 45px;
+    display: block;
+}
+
+.SearchClear {
+    outline: none;
+    border: 0;
+    visibility: collapse;
+    float:right;
+    margin-right: 11px;
+    margin-top: -21px;
+    height: 25px;
+    width: 25px;
+    border-radius: 22px;
+    background: #53A1FF;
+}
+
+.TJCard-Head {
+    height: 49px;
+    width: 49px;
+    overflow:hidden;
+    border-radius: 50%;
+    float: left;
+}
+
+.TJCard-NamePad {
+    float: left;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+.TJCard-Name {
+    font-family: 'Microsoft YaHei';
+    font-weight: bold;
+    font-size: 1rem;
+    color: #3A3E42;
+}
+
+.TJCard-At {
+    font-family: 'Microsoft YaHei';
+    font-size: 1rem;
+    color: #7F909E;
+    font-weight: normal;
+}
+
+.TJCard-But {
+    background-color: #F7F9FA;
+    border: 1px solid #1DA1F2;
+    width: 60px;
+    height: 30px;
+    border-radius: 30px;
+    color: #1DA1F2; font-family: 'Microsoft YaHei';
+    font-weight: bold;
+    margin-top: 9px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
