@@ -290,6 +290,33 @@ html,body{
     background: #1d95e0;
 }
 
+@media screen and (max-width: 1100px) {
+
+    .cardShare {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+}
+
+@media screen and (min-width: 1100px) {
+
+    .cardShare {
+        width: 600px;
+        height: 400px;
+        margin: 0 auto;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+
+}
+
 
 
 

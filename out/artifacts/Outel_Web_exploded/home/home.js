@@ -1,3 +1,18 @@
+function inputChoiceA(nameBorder, nameTitle) {
+    var border=document.getElementById(nameBorder);
+    border.style.border = "2px solid #69ADFF";
+    var title=document.getElementById(nameTitle);
+    title.style.color = "#69ADFF";
+}
+
+function inputunChoiceA(nameBorder, nameTitle) {
+    var border=document.getElementById(nameBorder);
+    border.style.border = "2px solid rgba(0, 0, 0, 0.3)";
+    var title=document.getElementById(nameTitle);
+    title.style.color = "#000";
+}
+
+
 function listCheck(nameTitle, namePic, changeTo) {
     let unChech = document.getElementById('tHome');
     unChech.style.color = "#000000";
@@ -24,10 +39,10 @@ function listCheck(nameTitle, namePic, changeTo) {
     unChech = document.getElementById('pMark');
     unChech.src = unChech.src.replace("blue", "black");
 
-    unChech = document.getElementById('tList');
-    unChech.style.color = "#000000";
-    unChech = document.getElementById('pList');
-    unChech.src = unChech.src.replace("blue", "black");
+    // unChech = document.getElementById('tList');
+    // unChech.style.color = "#000000";
+    // unChech = document.getElementById('pList');
+    // unChech.src = unChech.src.replace("blue", "black");
 
     unChech = document.getElementById('tMe');
     unChech.style.color = "#000000";
@@ -45,6 +60,7 @@ function listCheck(nameTitle, namePic, changeTo) {
 function checkForm(name){
     const out = document.getElementById(name);
     if(out.value !== "" || out.value !== "开始你的表演~") {
+        out.value = out.value.replace(/\n/g, "<br>");
         out.value = encodeURI(out.value);
     }
     return !(out.value === "" || out.value === "开始你的表演~");

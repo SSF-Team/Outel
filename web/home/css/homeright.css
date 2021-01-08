@@ -63,6 +63,15 @@ html,body{
     border-bottom:1px solid #EBEEF0;
 }
 
+.Tuijian_a{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 318px;
+    border-bottom:1px solid #EBEEF0;
+}
+
 .Search{
     height: 45px;
     width: 350px;
@@ -120,6 +129,19 @@ html,body{
     color: #1DA1F2; font-family: 'Microsoft YaHei';
     font-weight: bold;
     margin-top: 9px;
+}
+
+.TJCard-Index {
+    font-family: 'Microsoft YaHei';
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #3A3E42;
+}
+
+.TJCard-Time {
+    font-family: 'Microsoft YaHei';
+    font-size: 1rem;
+    color: #3A3E42;
 }
 
 

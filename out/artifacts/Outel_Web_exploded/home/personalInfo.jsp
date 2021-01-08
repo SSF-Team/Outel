@@ -126,7 +126,7 @@
                 out.print("<button class=\"SetPersonal_flo\"");
             }
             if(!noMe){
-                out.print("onclick=\"window.parent.document.getElementById('Pan').style.visibility = 'visible';\"");
+                out.print("onclick=\"window.parent.document.getElementById('pfPan').style.visibility = 'visible';\"");
                 out.print(">");
                 out.print("            <span>编辑个人资料</span>");
             }else{

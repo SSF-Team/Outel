@@ -44,8 +44,8 @@ public class OutNow extends HttpServlet {
                     if(pass.equals("OK")) {
                         // TODO 保存 Out
                         System.out.println(URLDecoder.decode(request.getParameter("outs"), "UTF-8"));
-                        String backOut = Article.insert("text,author_id,article_time",
-                                "'" + URLDecoder.decode(request.getParameter("outs"), "UTF-8") + "','" + id + "','" + Tools.GetDayString(0) + "'");
+                        String backOut = Article.insert("text,author_id,article_time,liker",
+                                "'" + URLDecoder.decode(request.getParameter("outs"), "UTF-8") + "','" + id + "','" + Tools.GetDayString(0) + "',' '");
                         if(backOut.equals("OK")) {
 //                            List<Dao.SQLVer> list = Article.selectByID("text", id);
 //                            System.out.println("> ID:" + id + " 的所有文章有：");

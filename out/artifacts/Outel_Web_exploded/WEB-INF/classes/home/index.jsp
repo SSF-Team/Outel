@@ -87,7 +87,7 @@
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="../css/main.css">
 </head>
-<body>
+<body onload="new ClipboardJS('.btn');">
 
 <!--私信-->
 <div id="RightBar" class="RightBottomBar" style="margin-bottom: -403px;">
@@ -217,7 +217,7 @@
         if(request.getParameter("user") != null) {
             out.print("        <iframe src=\"personalInfo.jsp?id=" + request.getParameter("user") + "&userid=" + id + "\" id=\"homeindex\" frameborder=\"no\" scrolling=\"no\" onload=\"this.height=this.contentWindow.document.documentElement.scrollHeight\" border=\"0\" width=\"100%\"></iframe>");
         } else if(request.getParameter("status") != null){
-
+            out.print("        <iframe src=\"out.jsp?status=" + request.getParameter("status") + "&userid=" + id + "\" id=\"homeindex\" frameborder=\"no\" scrolling=\"no\" onload=\"this.height=this.contentWindow.document.documentElement.scrollHeight\" border=\"0\" width=\"100%\"></iframe>");
         } else {
             out.print("        <iframe src=\"homeindex.jsp?back=" + back + "\" id=\"homeindex\" frameborder=\"no\" scrolling=\"no\" onload=\"this.height=this.contentWindow.document.documentElement.scrollHeight\" border=\"0\" width=\"100%\"></iframe>");
         }
@@ -231,10 +231,10 @@
 
 </div>
 
-<!-- 窗口 -->
-<div class="overlay" id="Pan" style="visibility: collapse;">
+<!-- 修改个人资料窗口 -->
+<div class="overlay" id="pfPan" style="visibility: collapse;">
     <div class="card cardLogin">
-        <div id="topBarLogin" style="text-align: center;">
+        <div style="text-align: center;">
             <div style="text-align: left;margin-left: 50px;margin-right: 50px;">
                 <img src="../svg/outel_no_c.svg" style="height: 35px;margin-top: 45px;"/>
                 <input type="submit" value="保存" class="bonSave"/>
@@ -245,10 +245,56 @@
             </div>
         </div>
     </div>
-    <button class="ExitPan" onclick="document.getElementById('Pan').style.visibility = 'collapse';"></button>
+    <button class="ExitPan" onclick="document.getElementById('pfPan').style.visibility = 'collapse';"></button>
+</div>
+
+<!-- 回复窗口 -->
+<div class="overlay" id="RepPan" style="visibility: collapse;">
+    <div class="card cardLogin">
+        <div id="topBarLogin" style="text-align: center;">
+            <img src="../svg/outel_no_c.svg" style="height: 35px;margin-top: 45px;"/>
+            <div style="margin: 50px;text-align: left;">
+                <font style="font-size: 25px;padding-top: 5px;" class="fontBold">回复</font><br>
+                <form>
+                    <textarea style="width: 519px;height: 293px;margin: 30px 0px 0px;background: transparent;min-width: 495px;max-width: 495px;min-height: 270px;max-height: 270px;outline: none;"></textarea>
+                    <button type="button" class="btn btn-primary" style="cursor: pointer; outline: none; margin-top: 35px; width: 180px;height: 45px; background-color: #1DA1F2;border: 1px;border-radius: 60px;
+                        border-color: #1DA1F2; box-shadow: 0 0 15px -9px #333333;">
+                        <span style="font-size: 18px;font-family: 'Microsoft YaHei';font-weight: bold; color: #FFFFFF">回复</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <button class="ExitPan" onclick="document.getElementById('RepPan').style.visibility = 'collapse';"></button>
+</div>
+
+<!-- 分享窗口 -->
+<div class="overlay" id="SharePan" style="visibility: collapse;">
+    <div class="card cardShare">
+        <div style="text-align: center;">
+            <img src="../svg/outel_no_c.svg" style="height: 35px;margin-top: 45px;"/>
+            <div style="margin: 50px;text-align: left;">
+                <font style="font-size: 25px;padding-top: 5px;" class="fontBold">分享 Out</font><br>
+                <div style="display: flex;">
+                    <label id="labPass" class="inputLab" style="padding-top: 10px;">
+                        <font id="titPass" style="font-size: 17px;">分享链接</font>
+                        <input id="link" value="正在生成链接……" type="text" style="width: 100%;height: 30px;border: 0;outline: 0;font-size: 17px;" onblur="inputunChoiceA('labPass', 'titPass')" onFocus="inputChoiceA('labPass', 'titPass')">
+                    </label>
+                </div>
+                <div style="text-align: center;">
+                    <button type="button" class="btn btn-primary" style="cursor: pointer; outline: none; margin-top: 35px; width: 180px;height: 45px; background-color: #1DA1F2;border: 1px;border-radius: 60px;
+                        border-color: #1DA1F2; box-shadow: 0 0 15px -9px #333333;" data-clipboard-target="#link">
+                        <span style="font-size: 18px;font-family: 'Microsoft YaHei';font-weight: bold; color: #FFFFFF">复制</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="ExitPan" onclick="document.getElementById('SharePan').style.visibility = 'collapse';"></button>
 </div>
 
 <script src="home.js"></script>
+<script src="../js/clipboard.js"></script>
 
 </body>
 </html>
