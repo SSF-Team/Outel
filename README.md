@@ -58,6 +58,4 @@ SQLPwd:数据库密码
 数据库结构参见最新的 Releases.
 
 ## 作者
-[Stapx Steve](https://github.com/Stapxs)
-
-[Chuhelan](https://github.com/chuhelan)
+[Stapx Steve](https://github.com/Stapxs)，[Chuhelan](https://github.com/chuhelan)
